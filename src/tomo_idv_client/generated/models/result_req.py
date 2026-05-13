@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from tomo_idv_client.generated.models.country import Country
 from tomo_idv_client.generated.models.kyc_policy import KycPolicy
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,9 +29,10 @@ class ResultReq(BaseModel):
     """
     ResultReq
     """ # noqa: E501
+    country: Optional[Country] = None
     policy: Optional[KycPolicy] = None
-    ppid: StrictStr
-    __properties: ClassVar[List[str]] = ["policy", "ppid"]
+    user_id: StrictStr
+    __properties: ClassVar[List[str]] = ["country", "policy", "user_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,8 +88,9 @@ class ResultReq(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "country": obj.get("country"),
             "policy": KycPolicy.from_dict(obj["policy"]) if obj.get("policy") is not None else None,
-            "ppid": obj.get("ppid")
+            "user_id": obj.get("user_id")
         })
         return _obj
 

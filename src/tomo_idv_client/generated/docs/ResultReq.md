@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**policy** | [**KycPolicy**](KycPolicy.md) |  | [optional] 
-**ppid** | **str** |  | 
+**country** | [**Country**](Country.md) |  | [optional]
+**policy** | [**KycPolicy**](KycPolicy.md) |  | [optional]
+**user_id** | **str** |  |
 
 ## Example
 
@@ -26,5 +27,4 @@ result_req_dict = result_req_instance.to_dict()
 result_req_from_dict = ResultReq.from_dict(result_req_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
 

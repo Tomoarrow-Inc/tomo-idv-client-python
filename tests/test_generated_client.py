@@ -7,7 +7,10 @@ def test_generated_client_exports_importable_api_and_model():
     # and model classes.
     configuration = Configuration(host="https://api.example.test")
     api = DefaultApi()
-    model = StartIdvReq(user_id="user-123")
+    model = StartIdvReq(
+        callback_url="https://example.com/callback",
+        user_id="user-123",
+    )
 
     assert configuration.host == "https://api.example.test"
     assert api is not None
