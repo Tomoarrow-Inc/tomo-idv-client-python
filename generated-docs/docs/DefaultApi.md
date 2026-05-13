@@ -7,16 +7,16 @@ Method | HTTP request | Description
 [**v1_idv_ca_health_get**](DefaultApi.md#v1_idv_ca_health_get) | **GET** /v1/idv/ca/health | 
 [**v1_idv_ca_kyc_get_post**](DefaultApi.md#v1_idv_ca_kyc_get_post) | **POST** /v1/idv/ca/kyc/get | 
 [**v1_idv_ca_start_post**](DefaultApi.md#v1_idv_ca_start_post) | **POST** /v1/idv/ca/start | 
-[**v1_idv_cn_cookie_start_post**](DefaultApi.md#v1_idv_cn_cookie_start_post) | **POST** /v1/idv/cn/cookie/start | 
 [**v1_idv_cn_health_get**](DefaultApi.md#v1_idv_cn_health_get) | **GET** /v1/idv/cn/health | 
 [**v1_idv_cn_kyc_get_post**](DefaultApi.md#v1_idv_cn_kyc_get_post) | **POST** /v1/idv/cn/kyc/get | 
-[**v1_idv_cn_result_web_post**](DefaultApi.md#v1_idv_cn_result_web_post) | **POST** /v1/idv/cn/result/web | 
 [**v1_idv_cn_start_post**](DefaultApi.md#v1_idv_cn_start_post) | **POST** /v1/idv/cn/start | 
 [**v1_idv_cn_token_post**](DefaultApi.md#v1_idv_cn_token_post) | **POST** /v1/idv/cn/token | 
+[**v1_idv_health_get**](DefaultApi.md#v1_idv_health_get) | **GET** /v1/idv/health | 
 [**v1_idv_jp_health_get**](DefaultApi.md#v1_idv_jp_health_get) | **GET** /v1/idv/jp/health | 
 [**v1_idv_jp_kyc_get_post**](DefaultApi.md#v1_idv_jp_kyc_get_post) | **POST** /v1/idv/jp/kyc/get | 
 [**v1_idv_jp_start_post**](DefaultApi.md#v1_idv_jp_start_post) | **POST** /v1/idv/jp/start | 
 [**v1_idv_kyc_get_post**](DefaultApi.md#v1_idv_kyc_get_post) | **POST** /v1/idv/kyc/get | 
+[**v1_idv_result_post**](DefaultApi.md#v1_idv_result_post) | **POST** /v1/idv/result | 
 [**v1_idv_sessions_start_post**](DefaultApi.md#v1_idv_sessions_start_post) | **POST** /v1/idv/sessions/start | 
 [**v1_idv_start_post**](DefaultApi.md#v1_idv_start_post) | **POST** /v1/idv/start | 
 [**v1_idv_uk_health_get**](DefaultApi.md#v1_idv_uk_health_get) | **GET** /v1/idv/uk/health | 
@@ -30,6 +30,8 @@ Method | HTTP request | Description
 
 # **v1_idv_ca_health_get**
 > str v1_idv_ca_health_get()
+
+[DEPRECATED] Use /v1/idv/health.
 
 ### Example
 
@@ -87,14 +89,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_ca_kyc_get_post**
-> Dict[str, str] v1_idv_ca_kyc_get_post(authorization=authorization, plaid_get_kyc_req=plaid_get_kyc_req)
+> UsGetUnionResultRes v1_idv_ca_kyc_get_post(authorization=authorization, us_get_kyc_req=us_get_kyc_req)
+
+[DEPRECATED] Use /v1/idv/result with country=ca.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.plaid_get_kyc_req import PlaidGetKycReq
+from tomo_idv_client.generated.models.us_get_kyc_req import UsGetKycReq
+from tomo_idv_client.generated.models.us_get_union_result_res import UsGetUnionResultRes
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -110,10 +115,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    plaid_get_kyc_req = tomo_idv_client.generated.PlaidGetKycReq() # PlaidGetKycReq |  (optional)
+    us_get_kyc_req = tomo_idv_client.generated.UsGetKycReq() # UsGetKycReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_ca_kyc_get_post(authorization=authorization, plaid_get_kyc_req=plaid_get_kyc_req)
+        api_response = api_instance.v1_idv_ca_kyc_get_post(authorization=authorization, us_get_kyc_req=us_get_kyc_req)
         print("The response of DefaultApi->v1_idv_ca_kyc_get_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -128,11 +133,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **plaid_get_kyc_req** | [**PlaidGetKycReq**](PlaidGetKycReq.md)|  | [optional] 
+ **us_get_kyc_req** | [**UsGetKycReq**](UsGetKycReq.md)|  | [optional] 
 
 ### Return type
 
-**Dict[str, str]**
+[**UsGetUnionResultRes**](UsGetUnionResultRes.md)
 
 ### Authorization
 
@@ -153,15 +158,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_ca_start_post**
-> PlaidStartIdvRes v1_idv_ca_start_post(authorization=authorization, plaid_start_idv_req=plaid_start_idv_req)
+> StartIdvRes v1_idv_ca_start_post(authorization=authorization, ca_start_idv_req=ca_start_idv_req)
+
+[DEPRECATED] Use /v1/idv/start with country=ca.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.plaid_start_idv_req import PlaidStartIdvReq
-from tomo_idv_client.generated.models.plaid_start_idv_res import PlaidStartIdvRes
+from tomo_idv_client.generated.models.ca_start_idv_req import CaStartIdvReq
+from tomo_idv_client.generated.models.start_idv_res import StartIdvRes
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -177,10 +184,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    plaid_start_idv_req = tomo_idv_client.generated.PlaidStartIdvReq() # PlaidStartIdvReq |  (optional)
+    ca_start_idv_req = tomo_idv_client.generated.CaStartIdvReq() # CaStartIdvReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_ca_start_post(authorization=authorization, plaid_start_idv_req=plaid_start_idv_req)
+        api_response = api_instance.v1_idv_ca_start_post(authorization=authorization, ca_start_idv_req=ca_start_idv_req)
         print("The response of DefaultApi->v1_idv_ca_start_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -195,11 +202,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **plaid_start_idv_req** | [**PlaidStartIdvReq**](PlaidStartIdvReq.md)|  | [optional] 
+ **ca_start_idv_req** | [**CaStartIdvReq**](CaStartIdvReq.md)|  | [optional] 
 
 ### Return type
 
-[**PlaidStartIdvRes**](PlaidStartIdvRes.md)
+[**StartIdvRes**](StartIdvRes.md)
 
 ### Authorization
 
@@ -219,73 +226,10 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v1_idv_cn_cookie_start_post**
-> TencentStartIdvRes v1_idv_cn_cookie_start_post(tencent_start_req=tencent_start_req)
-
-### Example
-
-
-```python
-import tomo_idv_client.generated
-from tomo_idv_client.generated.models.tencent_start_idv_res import TencentStartIdvRes
-from tomo_idv_client.generated.models.tencent_start_req import TencentStartReq
-from tomo_idv_client.generated.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = tomo_idv_client.generated.Configuration(
-    host = "http://localhost"
-)
-
-
-# Enter a context with an instance of the API client
-with tomo_idv_client.generated.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = tomo_idv_client.generated.DefaultApi(api_client)
-    tencent_start_req = tomo_idv_client.generated.TencentStartReq() # TencentStartReq |  (optional)
-
-    try:
-        api_response = api_instance.v1_idv_cn_cookie_start_post(tencent_start_req=tencent_start_req)
-        print("The response of DefaultApi->v1_idv_cn_cookie_start_post:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->v1_idv_cn_cookie_start_post: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tencent_start_req** | [**TencentStartReq**](TencentStartReq.md)|  | [optional] 
-
-### Return type
-
-[**TencentStartIdvRes**](TencentStartIdvRes.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json;charset=utf-8
- - **Accept**: application/json;charset=utf-8
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  * Set-Cookie -  <br>  |
-**400** | Invalid &#x60;body&#x60; |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **v1_idv_cn_health_get**
 > str v1_idv_cn_health_get()
+
+[DEPRECATED] Use /v1/idv/health.
 
 ### Example
 
@@ -343,15 +287,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_cn_kyc_get_post**
-> TencentGetUnionResultRes v1_idv_cn_kyc_get_post(authorization=authorization, tencent_get_kyc_req=tencent_get_kyc_req)
+> CnGetUnionResultRes v1_idv_cn_kyc_get_post(authorization=authorization, cn_get_kyc_req=cn_get_kyc_req)
+
+[DEPRECATED] Use /v1/idv/result with country=cn.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.tencent_get_kyc_req import TencentGetKycReq
-from tomo_idv_client.generated.models.tencent_get_union_result_res import TencentGetUnionResultRes
+from tomo_idv_client.generated.models.cn_get_kyc_req import CnGetKycReq
+from tomo_idv_client.generated.models.cn_get_union_result_res import CnGetUnionResultRes
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -367,10 +313,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    tencent_get_kyc_req = tomo_idv_client.generated.TencentGetKycReq() # TencentGetKycReq |  (optional)
+    cn_get_kyc_req = tomo_idv_client.generated.CnGetKycReq() # CnGetKycReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_cn_kyc_get_post(authorization=authorization, tencent_get_kyc_req=tencent_get_kyc_req)
+        api_response = api_instance.v1_idv_cn_kyc_get_post(authorization=authorization, cn_get_kyc_req=cn_get_kyc_req)
         print("The response of DefaultApi->v1_idv_cn_kyc_get_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -385,11 +331,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **tencent_get_kyc_req** | [**TencentGetKycReq**](TencentGetKycReq.md)|  | [optional] 
+ **cn_get_kyc_req** | [**CnGetKycReq**](CnGetKycReq.md)|  | [optional] 
 
 ### Return type
 
-[**TencentGetUnionResultRes**](TencentGetUnionResultRes.md)
+[**CnGetUnionResultRes**](CnGetUnionResultRes.md)
 
 ### Authorization
 
@@ -409,74 +355,18 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v1_idv_cn_result_web_post**
-> object v1_idv_cn_result_web_post()
-
-### Example
-
-
-```python
-import tomo_idv_client.generated
-from tomo_idv_client.generated.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = tomo_idv_client.generated.Configuration(
-    host = "http://localhost"
-)
-
-
-# Enter a context with an instance of the API client
-with tomo_idv_client.generated.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = tomo_idv_client.generated.DefaultApi(api_client)
-
-    try:
-        api_response = api_instance.v1_idv_cn_result_web_post()
-        print("The response of DefaultApi->v1_idv_cn_result_web_post:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->v1_idv_cn_result_web_post: %s\n" % e)
-```
-
-
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=utf-8
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **v1_idv_cn_start_post**
-> TencentStartIdvRes v1_idv_cn_start_post(authorization=authorization, tencent_start_req=tencent_start_req)
+> StartIdvRes v1_idv_cn_start_post(authorization=authorization, cn_start_idv_req=cn_start_idv_req)
+
+[DEPRECATED] Use /v1/idv/start with country=cn.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.tencent_start_idv_res import TencentStartIdvRes
-from tomo_idv_client.generated.models.tencent_start_req import TencentStartReq
+from tomo_idv_client.generated.models.cn_start_idv_req import CnStartIdvReq
+from tomo_idv_client.generated.models.start_idv_res import StartIdvRes
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -492,10 +382,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    tencent_start_req = tomo_idv_client.generated.TencentStartReq() # TencentStartReq |  (optional)
+    cn_start_idv_req = tomo_idv_client.generated.CnStartIdvReq() # CnStartIdvReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_cn_start_post(authorization=authorization, tencent_start_req=tencent_start_req)
+        api_response = api_instance.v1_idv_cn_start_post(authorization=authorization, cn_start_idv_req=cn_start_idv_req)
         print("The response of DefaultApi->v1_idv_cn_start_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -510,11 +400,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **tencent_start_req** | [**TencentStartReq**](TencentStartReq.md)|  | [optional] 
+ **cn_start_idv_req** | [**CnStartIdvReq**](CnStartIdvReq.md)|  | [optional] 
 
 ### Return type
 
-[**TencentStartIdvRes**](TencentStartIdvRes.md)
+[**StartIdvRes**](StartIdvRes.md)
 
 ### Authorization
 
@@ -536,6 +426,8 @@ No authorization required
 
 # **v1_idv_cn_token_post**
 > TomoIdvIssueTokenRes v1_idv_cn_token_post(authorization=authorization, tomo_idv_issue_token_req=tomo_idv_issue_token_req)
+
+[DEPRECATED] Use the OAuth2 token endpoint.
 
 ### Example
 
@@ -601,8 +493,68 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v1_idv_health_get**
+> str v1_idv_health_get()
+
+### Example
+
+
+```python
+import tomo_idv_client.generated
+from tomo_idv_client.generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = tomo_idv_client.generated.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with tomo_idv_client.generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = tomo_idv_client.generated.DefaultApi(api_client)
+
+    try:
+        api_response = api_instance.v1_idv_health_get()
+        print("The response of DefaultApi->v1_idv_health_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v1_idv_health_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**str**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json;charset=utf-8
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v1_idv_jp_health_get**
 > str v1_idv_jp_health_get()
+
+[DEPRECATED] Use /v1/idv/health.
 
 ### Example
 
@@ -660,15 +612,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_jp_kyc_get_post**
-> LiquidGetUnionResultRes v1_idv_jp_kyc_get_post(authorization=authorization, liquid_get_kyc_req=liquid_get_kyc_req)
+> JpGetUnionResultRes v1_idv_jp_kyc_get_post(authorization=authorization, jp_get_kyc_req=jp_get_kyc_req)
+
+[DEPRECATED] Use /v1/idv/result with country=jp.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.liquid_get_kyc_req import LiquidGetKycReq
-from tomo_idv_client.generated.models.liquid_get_union_result_res import LiquidGetUnionResultRes
+from tomo_idv_client.generated.models.jp_get_kyc_req import JpGetKycReq
+from tomo_idv_client.generated.models.jp_get_union_result_res import JpGetUnionResultRes
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -684,10 +638,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    liquid_get_kyc_req = tomo_idv_client.generated.LiquidGetKycReq() # LiquidGetKycReq |  (optional)
+    jp_get_kyc_req = tomo_idv_client.generated.JpGetKycReq() # JpGetKycReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_jp_kyc_get_post(authorization=authorization, liquid_get_kyc_req=liquid_get_kyc_req)
+        api_response = api_instance.v1_idv_jp_kyc_get_post(authorization=authorization, jp_get_kyc_req=jp_get_kyc_req)
         print("The response of DefaultApi->v1_idv_jp_kyc_get_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -702,11 +656,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **liquid_get_kyc_req** | [**LiquidGetKycReq**](LiquidGetKycReq.md)|  | [optional] 
+ **jp_get_kyc_req** | [**JpGetKycReq**](JpGetKycReq.md)|  | [optional] 
 
 ### Return type
 
-[**LiquidGetUnionResultRes**](LiquidGetUnionResultRes.md)
+[**JpGetUnionResultRes**](JpGetUnionResultRes.md)
 
 ### Authorization
 
@@ -727,15 +681,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_jp_start_post**
-> LiquidIntegratedAppRes v1_idv_jp_start_post(authorization=authorization, liquid_start_idv_req=liquid_start_idv_req)
+> StartIdvRes v1_idv_jp_start_post(authorization=authorization, jp_start_idv_req=jp_start_idv_req)
+
+[DEPRECATED] Use /v1/idv/start with country=jp.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.liquid_integrated_app_res import LiquidIntegratedAppRes
-from tomo_idv_client.generated.models.liquid_start_idv_req import LiquidStartIdvReq
+from tomo_idv_client.generated.models.jp_start_idv_req import JpStartIdvReq
+from tomo_idv_client.generated.models.start_idv_res import StartIdvRes
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -751,10 +707,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    liquid_start_idv_req = tomo_idv_client.generated.LiquidStartIdvReq() # LiquidStartIdvReq |  (optional)
+    jp_start_idv_req = tomo_idv_client.generated.JpStartIdvReq() # JpStartIdvReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_jp_start_post(authorization=authorization, liquid_start_idv_req=liquid_start_idv_req)
+        api_response = api_instance.v1_idv_jp_start_post(authorization=authorization, jp_start_idv_req=jp_start_idv_req)
         print("The response of DefaultApi->v1_idv_jp_start_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -769,11 +725,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **liquid_start_idv_req** | [**LiquidStartIdvReq**](LiquidStartIdvReq.md)|  | [optional] 
+ **jp_start_idv_req** | [**JpStartIdvReq**](JpStartIdvReq.md)|  | [optional] 
 
 ### Return type
 
-[**LiquidIntegratedAppRes**](LiquidIntegratedAppRes.md)
+[**StartIdvRes**](StartIdvRes.md)
 
 ### Authorization
 
@@ -795,6 +751,8 @@ No authorization required
 
 # **v1_idv_kyc_get_post**
 > GetKycRes v1_idv_kyc_get_post(authorization=authorization, get_kyc_req=get_kyc_req)
+
+[DEPRECATED] Use /v1/idv/result.
 
 ### Example
 
@@ -860,8 +818,77 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v1_idv_result_post**
+> ResultRes v1_idv_result_post(authorization=authorization, result_req=result_req)
+
+### Example
+
+
+```python
+import tomo_idv_client.generated
+from tomo_idv_client.generated.models.result_req import ResultReq
+from tomo_idv_client.generated.models.result_res import ResultRes
+from tomo_idv_client.generated.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = tomo_idv_client.generated.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with tomo_idv_client.generated.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = tomo_idv_client.generated.DefaultApi(api_client)
+    authorization = 'authorization_example' # str |  (optional)
+    result_req = tomo_idv_client.generated.ResultReq() # ResultReq |  (optional)
+
+    try:
+        api_response = api_instance.v1_idv_result_post(authorization=authorization, result_req=result_req)
+        print("The response of DefaultApi->v1_idv_result_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v1_idv_result_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**|  | [optional] 
+ **result_req** | [**ResultReq**](ResultReq.md)|  | [optional] 
+
+### Return type
+
+[**ResultRes**](ResultRes.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json;charset=utf-8
+ - **Accept**: application/json;charset=utf-8
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+**400** | Invalid &#x60;body&#x60; or &#x60;Authorization&#x60; |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v1_idv_sessions_start_post**
 > SessionStartRes v1_idv_sessions_start_post(authorization=authorization, session_start_req=session_start_req)
+
+[DEPRECATED] Use /v1/idv/start.
 
 ### Example
 
@@ -997,6 +1024,8 @@ No authorization required
 # **v1_idv_uk_health_get**
 > str v1_idv_uk_health_get()
 
+[DEPRECATED] Use /v1/idv/health.
+
 ### Example
 
 
@@ -1053,14 +1082,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_uk_kyc_get_post**
-> Dict[str, str] v1_idv_uk_kyc_get_post(authorization=authorization, plaid_get_kyc_req=plaid_get_kyc_req)
+> UsGetUnionResultRes v1_idv_uk_kyc_get_post(authorization=authorization, us_get_kyc_req=us_get_kyc_req)
+
+[DEPRECATED] Use /v1/idv/result with country=uk.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.plaid_get_kyc_req import PlaidGetKycReq
+from tomo_idv_client.generated.models.us_get_kyc_req import UsGetKycReq
+from tomo_idv_client.generated.models.us_get_union_result_res import UsGetUnionResultRes
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -1076,10 +1108,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    plaid_get_kyc_req = tomo_idv_client.generated.PlaidGetKycReq() # PlaidGetKycReq |  (optional)
+    us_get_kyc_req = tomo_idv_client.generated.UsGetKycReq() # UsGetKycReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_uk_kyc_get_post(authorization=authorization, plaid_get_kyc_req=plaid_get_kyc_req)
+        api_response = api_instance.v1_idv_uk_kyc_get_post(authorization=authorization, us_get_kyc_req=us_get_kyc_req)
         print("The response of DefaultApi->v1_idv_uk_kyc_get_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -1094,11 +1126,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **plaid_get_kyc_req** | [**PlaidGetKycReq**](PlaidGetKycReq.md)|  | [optional] 
+ **us_get_kyc_req** | [**UsGetKycReq**](UsGetKycReq.md)|  | [optional] 
 
 ### Return type
 
-**Dict[str, str]**
+[**UsGetUnionResultRes**](UsGetUnionResultRes.md)
 
 ### Authorization
 
@@ -1119,15 +1151,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_uk_start_post**
-> PlaidStartIdvRes v1_idv_uk_start_post(authorization=authorization, plaid_start_idv_req=plaid_start_idv_req)
+> StartIdvRes v1_idv_uk_start_post(authorization=authorization, uk_start_idv_req=uk_start_idv_req)
+
+[DEPRECATED] Use /v1/idv/start with country=uk.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.plaid_start_idv_req import PlaidStartIdvReq
-from tomo_idv_client.generated.models.plaid_start_idv_res import PlaidStartIdvRes
+from tomo_idv_client.generated.models.start_idv_res import StartIdvRes
+from tomo_idv_client.generated.models.uk_start_idv_req import UkStartIdvReq
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -1143,10 +1177,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    plaid_start_idv_req = tomo_idv_client.generated.PlaidStartIdvReq() # PlaidStartIdvReq |  (optional)
+    uk_start_idv_req = tomo_idv_client.generated.UkStartIdvReq() # UkStartIdvReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_uk_start_post(authorization=authorization, plaid_start_idv_req=plaid_start_idv_req)
+        api_response = api_instance.v1_idv_uk_start_post(authorization=authorization, uk_start_idv_req=uk_start_idv_req)
         print("The response of DefaultApi->v1_idv_uk_start_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -1161,11 +1195,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **plaid_start_idv_req** | [**PlaidStartIdvReq**](PlaidStartIdvReq.md)|  | [optional] 
+ **uk_start_idv_req** | [**UkStartIdvReq**](UkStartIdvReq.md)|  | [optional] 
 
 ### Return type
 
-[**PlaidStartIdvRes**](PlaidStartIdvRes.md)
+[**StartIdvRes**](StartIdvRes.md)
 
 ### Authorization
 
@@ -1187,6 +1221,8 @@ No authorization required
 
 # **v1_idv_us_health_get**
 > str v1_idv_us_health_get()
+
+[DEPRECATED] Use /v1/idv/health.
 
 ### Example
 
@@ -1244,14 +1280,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_us_kyc_get_post**
-> Dict[str, str] v1_idv_us_kyc_get_post(authorization=authorization, plaid_get_kyc_req=plaid_get_kyc_req)
+> UsGetUnionResultRes v1_idv_us_kyc_get_post(authorization=authorization, us_get_kyc_req=us_get_kyc_req)
+
+[DEPRECATED] Use /v1/idv/result with country=us.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.plaid_get_kyc_req import PlaidGetKycReq
+from tomo_idv_client.generated.models.us_get_kyc_req import UsGetKycReq
+from tomo_idv_client.generated.models.us_get_union_result_res import UsGetUnionResultRes
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -1267,10 +1306,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    plaid_get_kyc_req = tomo_idv_client.generated.PlaidGetKycReq() # PlaidGetKycReq |  (optional)
+    us_get_kyc_req = tomo_idv_client.generated.UsGetKycReq() # UsGetKycReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_us_kyc_get_post(authorization=authorization, plaid_get_kyc_req=plaid_get_kyc_req)
+        api_response = api_instance.v1_idv_us_kyc_get_post(authorization=authorization, us_get_kyc_req=us_get_kyc_req)
         print("The response of DefaultApi->v1_idv_us_kyc_get_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -1285,11 +1324,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **plaid_get_kyc_req** | [**PlaidGetKycReq**](PlaidGetKycReq.md)|  | [optional] 
+ **us_get_kyc_req** | [**UsGetKycReq**](UsGetKycReq.md)|  | [optional] 
 
 ### Return type
 
-**Dict[str, str]**
+[**UsGetUnionResultRes**](UsGetUnionResultRes.md)
 
 ### Authorization
 
@@ -1310,15 +1349,17 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_idv_us_start_post**
-> PlaidStartIdvRes v1_idv_us_start_post(authorization=authorization, plaid_start_idv_req=plaid_start_idv_req)
+> StartIdvRes v1_idv_us_start_post(authorization=authorization, us_start_idv_req=us_start_idv_req)
+
+[DEPRECATED] Use /v1/idv/start with country=us.
 
 ### Example
 
 
 ```python
 import tomo_idv_client.generated
-from tomo_idv_client.generated.models.plaid_start_idv_req import PlaidStartIdvReq
-from tomo_idv_client.generated.models.plaid_start_idv_res import PlaidStartIdvRes
+from tomo_idv_client.generated.models.start_idv_res import StartIdvRes
+from tomo_idv_client.generated.models.us_start_idv_req import UsStartIdvReq
 from tomo_idv_client.generated.rest import ApiException
 from pprint import pprint
 
@@ -1334,10 +1375,10 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = tomo_idv_client.generated.DefaultApi(api_client)
     authorization = 'authorization_example' # str |  (optional)
-    plaid_start_idv_req = tomo_idv_client.generated.PlaidStartIdvReq() # PlaidStartIdvReq |  (optional)
+    us_start_idv_req = tomo_idv_client.generated.UsStartIdvReq() # UsStartIdvReq |  (optional)
 
     try:
-        api_response = api_instance.v1_idv_us_start_post(authorization=authorization, plaid_start_idv_req=plaid_start_idv_req)
+        api_response = api_instance.v1_idv_us_start_post(authorization=authorization, us_start_idv_req=us_start_idv_req)
         print("The response of DefaultApi->v1_idv_us_start_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -1352,11 +1393,11 @@ with tomo_idv_client.generated.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**|  | [optional] 
- **plaid_start_idv_req** | [**PlaidStartIdvReq**](PlaidStartIdvReq.md)|  | [optional] 
+ **us_start_idv_req** | [**UsStartIdvReq**](UsStartIdvReq.md)|  | [optional] 
 
 ### Return type
 
-[**PlaidStartIdvRes**](PlaidStartIdvRes.md)
+[**StartIdvRes**](StartIdvRes.md)
 
 ### Authorization
 

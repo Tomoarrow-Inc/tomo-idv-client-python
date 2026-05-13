@@ -32,7 +32,6 @@ class TokenRes(BaseModel):
     expires_in: Annotated[int, Field(le=9223372036854775807, strict=True, ge=-9223372036854775808)]
     scope: Optional[StrictStr] = None
     token_type: StrictStr
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["access_token", "expires_in", "scope", "token_type"]
 
     model_config = ConfigDict(
@@ -65,10 +64,8 @@ class TokenRes(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -76,11 +73,6 @@ class TokenRes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -98,11 +90,6 @@ class TokenRes(BaseModel):
             "scope": obj.get("scope"),
             "token_type": obj.get("token_type")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

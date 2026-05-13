@@ -31,7 +31,6 @@ class TomoIdvIssueTokenRes(BaseModel):
     expires_in: Annotated[int, Field(le=9223372036854775807, strict=True, ge=-9223372036854775808)]
     key: StrictStr
     session_token: StrictStr
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["expires_in", "key", "session_token"]
 
     model_config = ConfigDict(
@@ -64,10 +63,8 @@ class TomoIdvIssueTokenRes(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,11 +72,6 @@ class TomoIdvIssueTokenRes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -96,11 +88,6 @@ class TomoIdvIssueTokenRes(BaseModel):
             "key": obj.get("key"),
             "session_token": obj.get("session_token")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

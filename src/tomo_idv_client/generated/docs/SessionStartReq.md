@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **callback_url** | **str** |  | [optional] 
 **country** | [**Country**](Country.md) |  | [optional] 
 **email** | **str** |  | [optional] 
-**policy_id** | **str** |  | [optional] 
+**kyc_policy** | [**KycPolicy**](KycPolicy.md) |  | [optional] 
 **user_id** | **str** |  | 
 
 ## Example

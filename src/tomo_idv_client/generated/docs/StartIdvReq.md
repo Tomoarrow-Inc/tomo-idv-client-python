@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**callback_url** | **str** |  | [optional] 
+**callback_url** | **str** |  | 
 **country** | [**Country**](Country.md) |  | [optional] 
 **email** | **str** |  | [optional] 
-**kyc_policy_id** | **str** |  | [optional] 
-**user_id** | **str** |  | 
+**kyc_policy** | [**KycPolicy**](KycPolicy.md) |  | [optional] 
+**user_id** | **str** |  | [optional] 
 
 ## Example
 

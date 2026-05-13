@@ -12,8 +12,12 @@ const repoRoot = join(__dirname, '..');
 const tempRoot = join(repoRoot, '.openapi-generator-tmp');
 const generatedSource = join(tempRoot, 'tomo_idv_client', 'generated');
 const generatedDest = join(repoRoot, 'src', 'tomo_idv_client', 'generated');
-const docsSource = join(tempRoot, 'tomo_idv_client', 'generated', 'docs');
-const readmeSource = join(tempRoot, 'tomo_idv_client', 'generated_README.md');
+const packageDocsSource = join(tempRoot, 'tomo_idv_client', 'generated', 'docs');
+const topLevelDocsSource = join(tempRoot, 'docs');
+const docsSource = existsSync(packageDocsSource) ? packageDocsSource : topLevelDocsSource;
+const generatedReadmeSource = join(tempRoot, 'tomo_idv_client', 'generated_README.md');
+const topLevelReadmeSource = join(tempRoot, 'README.md');
+const readmeSource = existsSync(generatedReadmeSource) ? generatedReadmeSource : topLevelReadmeSource;
 const docsDest = join(repoRoot, 'generated-docs');
 
 if (!existsSync(generatedSource)) {
@@ -23,6 +27,10 @@ if (!existsSync(generatedSource)) {
 mkdirSync(join(repoRoot, 'src', 'tomo_idv_client'), { recursive: true });
 cpSync(generatedSource, generatedDest, { recursive: true });
 rmSync(join(generatedDest, 'test'), { recursive: true, force: true });
+if (existsSync(docsSource)) {
+  rmSync(join(generatedDest, 'docs'), { recursive: true, force: true });
+  cpSync(docsSource, join(generatedDest, 'docs'), { recursive: true });
+}
 console.log(`Copied generated package to ${generatedDest}`);
 
 rmSync(docsDest, { recursive: true, force: true });
