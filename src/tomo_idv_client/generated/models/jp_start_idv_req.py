@@ -19,22 +19,18 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from tomo_idv_client.generated.models.country import Country
-from tomo_idv_client.generated.models.kyc_policy import KycPolicy
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class StartIdvReq(BaseModel):
+class JpStartIdvReq(BaseModel):
     """
-    StartIdvReq
+    JpStartIdvReq
     """ # noqa: E501
     callback_url: StrictStr
-    country: Optional[Country] = None
-    email: Optional[StrictStr] = None
-    kyc_policy: Optional[KycPolicy] = None
-    user_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["callback_url", "country", "email", "kyc_policy", "user_id"]
+    kyc_policy_id: Optional[StrictStr] = None
+    user_id: StrictStr
+    __properties: ClassVar[List[str]] = ["callback_url", "kyc_policy_id", "user_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -54,7 +50,7 @@ class StartIdvReq(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StartIdvReq from a JSON string"""
+        """Create an instance of JpStartIdvReq from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,14 +71,11 @@ class StartIdvReq(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of kyc_policy
-        if self.kyc_policy:
-            _dict['kyc_policy'] = self.kyc_policy.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StartIdvReq from a dict"""
+        """Create an instance of JpStartIdvReq from a dict"""
         if obj is None:
             return None
 
@@ -91,9 +84,7 @@ class StartIdvReq(BaseModel):
 
         _obj = cls.model_validate({
             "callback_url": obj.get("callback_url"),
-            "country": obj.get("country"),
-            "email": obj.get("email"),
-            "kyc_policy": KycPolicy.from_dict(obj["kyc_policy"]) if obj.get("kyc_policy") is not None else None,
+            "kyc_policy_id": obj.get("kyc_policy_id"),
             "user_id": obj.get("user_id")
         })
         return _obj

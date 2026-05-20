@@ -19,22 +19,20 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from tomo_idv_client.generated.models.country import Country
-from tomo_idv_client.generated.models.kyc_policy import KycPolicy
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class StartIdvReq(BaseModel):
+class JpGetResultRes(BaseModel):
     """
-    StartIdvReq
+    JpGetResultRes
     """ # noqa: E501
-    callback_url: StrictStr
-    country: Optional[Country] = None
-    email: Optional[StrictStr] = None
-    kyc_policy: Optional[KycPolicy] = None
-    user_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["callback_url", "country", "email", "kyc_policy", "user_id"]
+    address: Optional[StrictStr] = None
+    date_of_birth: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    postal_code: Optional[StrictStr] = None
+    sex: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["address", "date_of_birth", "name", "postal_code", "sex"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -54,7 +52,7 @@ class StartIdvReq(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StartIdvReq from a JSON string"""
+        """Create an instance of JpGetResultRes from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,14 +73,36 @@ class StartIdvReq(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of kyc_policy
-        if self.kyc_policy:
-            _dict['kyc_policy'] = self.kyc_policy.to_dict()
+        # set to None if address (nullable) is None
+        # and model_fields_set contains the field
+        if self.address is None and "address" in self.model_fields_set:
+            _dict['address'] = None
+
+        # set to None if date_of_birth (nullable) is None
+        # and model_fields_set contains the field
+        if self.date_of_birth is None and "date_of_birth" in self.model_fields_set:
+            _dict['date_of_birth'] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if postal_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.postal_code is None and "postal_code" in self.model_fields_set:
+            _dict['postal_code'] = None
+
+        # set to None if sex (nullable) is None
+        # and model_fields_set contains the field
+        if self.sex is None and "sex" in self.model_fields_set:
+            _dict['sex'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StartIdvReq from a dict"""
+        """Create an instance of JpGetResultRes from a dict"""
         if obj is None:
             return None
 
@@ -90,11 +110,11 @@ class StartIdvReq(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "callback_url": obj.get("callback_url"),
-            "country": obj.get("country"),
-            "email": obj.get("email"),
-            "kyc_policy": KycPolicy.from_dict(obj["kyc_policy"]) if obj.get("kyc_policy") is not None else None,
-            "user_id": obj.get("user_id")
+            "address": obj.get("address"),
+            "date_of_birth": obj.get("date_of_birth"),
+            "name": obj.get("name"),
+            "postal_code": obj.get("postal_code"),
+            "sex": obj.get("sex")
         })
         return _obj
 

@@ -23,24 +23,21 @@ from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class GetKycRes(BaseModel):
+class UsGetResultRes(BaseModel):
     """
-    GetKycRes
+    UsGetResultRes
     """ # noqa: E501
     city: Optional[StrictStr] = None
-    country: StrictStr
-    date_of_birth: StrictStr
+    country: Optional[StrictStr] = None
+    date_of_birth: Optional[StrictStr] = None
     email_address: Optional[StrictStr] = None
     family_name: Optional[StrictStr] = None
-    full_address: StrictStr
-    full_name: StrictStr
     given_name: Optional[StrictStr] = None
     phone_number: Optional[StrictStr] = None
     postal_code: Optional[StrictStr] = None
     region: Optional[StrictStr] = None
-    sex: Optional[StrictStr] = None
     street: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["city", "country", "date_of_birth", "email_address", "family_name", "full_address", "full_name", "given_name", "phone_number", "postal_code", "region", "sex", "street"]
+    __properties: ClassVar[List[str]] = ["city", "country", "date_of_birth", "email_address", "family_name", "given_name", "phone_number", "postal_code", "region", "street"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -60,7 +57,7 @@ class GetKycRes(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetKycRes from a JSON string"""
+        """Create an instance of UsGetResultRes from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,11 +78,61 @@ class GetKycRes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if city (nullable) is None
+        # and model_fields_set contains the field
+        if self.city is None and "city" in self.model_fields_set:
+            _dict['city'] = None
+
+        # set to None if country (nullable) is None
+        # and model_fields_set contains the field
+        if self.country is None and "country" in self.model_fields_set:
+            _dict['country'] = None
+
+        # set to None if date_of_birth (nullable) is None
+        # and model_fields_set contains the field
+        if self.date_of_birth is None and "date_of_birth" in self.model_fields_set:
+            _dict['date_of_birth'] = None
+
+        # set to None if email_address (nullable) is None
+        # and model_fields_set contains the field
+        if self.email_address is None and "email_address" in self.model_fields_set:
+            _dict['email_address'] = None
+
+        # set to None if family_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.family_name is None and "family_name" in self.model_fields_set:
+            _dict['family_name'] = None
+
+        # set to None if given_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.given_name is None and "given_name" in self.model_fields_set:
+            _dict['given_name'] = None
+
+        # set to None if phone_number (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone_number is None and "phone_number" in self.model_fields_set:
+            _dict['phone_number'] = None
+
+        # set to None if postal_code (nullable) is None
+        # and model_fields_set contains the field
+        if self.postal_code is None and "postal_code" in self.model_fields_set:
+            _dict['postal_code'] = None
+
+        # set to None if region (nullable) is None
+        # and model_fields_set contains the field
+        if self.region is None and "region" in self.model_fields_set:
+            _dict['region'] = None
+
+        # set to None if street (nullable) is None
+        # and model_fields_set contains the field
+        if self.street is None and "street" in self.model_fields_set:
+            _dict['street'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetKycRes from a dict"""
+        """Create an instance of UsGetResultRes from a dict"""
         if obj is None:
             return None
 
@@ -98,13 +145,10 @@ class GetKycRes(BaseModel):
             "date_of_birth": obj.get("date_of_birth"),
             "email_address": obj.get("email_address"),
             "family_name": obj.get("family_name"),
-            "full_address": obj.get("full_address"),
-            "full_name": obj.get("full_name"),
             "given_name": obj.get("given_name"),
             "phone_number": obj.get("phone_number"),
             "postal_code": obj.get("postal_code"),
             "region": obj.get("region"),
-            "sex": obj.get("sex"),
             "street": obj.get("street")
         })
         return _obj

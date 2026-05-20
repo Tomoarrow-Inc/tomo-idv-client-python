@@ -16,27 +16,29 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import StrictStr
-from typing import Any, Dict, Optional
+from typing import Optional
+from tomo_idv_client.generated.models.ca_start_idv_req import CaStartIdvReq
+from tomo_idv_client.generated.models.cn_get_kyc_req import CnGetKycReq
+from tomo_idv_client.generated.models.cn_get_union_result_res import CnGetUnionResultRes
+from tomo_idv_client.generated.models.cn_start_idv_req import CnStartIdvReq
 from tomo_idv_client.generated.models.get_kyc_req import GetKycReq
 from tomo_idv_client.generated.models.get_kyc_res import GetKycRes
-from tomo_idv_client.generated.models.liquid_get_kyc_req import LiquidGetKycReq
-from tomo_idv_client.generated.models.liquid_get_union_result_res import LiquidGetUnionResultRes
-from tomo_idv_client.generated.models.liquid_integrated_app_res import LiquidIntegratedAppRes
-from tomo_idv_client.generated.models.liquid_start_idv_req import LiquidStartIdvReq
-from tomo_idv_client.generated.models.plaid_get_kyc_req import PlaidGetKycReq
-from tomo_idv_client.generated.models.plaid_start_idv_req import PlaidStartIdvReq
-from tomo_idv_client.generated.models.plaid_start_idv_res import PlaidStartIdvRes
+from tomo_idv_client.generated.models.jp_get_kyc_req import JpGetKycReq
+from tomo_idv_client.generated.models.jp_get_union_result_res import JpGetUnionResultRes
+from tomo_idv_client.generated.models.jp_start_idv_req import JpStartIdvReq
+from tomo_idv_client.generated.models.result_req import ResultReq
+from tomo_idv_client.generated.models.result_res import ResultRes
 from tomo_idv_client.generated.models.session_start_req import SessionStartReq
 from tomo_idv_client.generated.models.session_start_res import SessionStartRes
 from tomo_idv_client.generated.models.start_idv_req import StartIdvReq
 from tomo_idv_client.generated.models.start_idv_res import StartIdvRes
-from tomo_idv_client.generated.models.tencent_get_kyc_req import TencentGetKycReq
-from tomo_idv_client.generated.models.tencent_get_union_result_res import TencentGetUnionResultRes
-from tomo_idv_client.generated.models.tencent_start_idv_res import TencentStartIdvRes
-from tomo_idv_client.generated.models.tencent_start_req import TencentStartReq
 from tomo_idv_client.generated.models.token_res import TokenRes
 from tomo_idv_client.generated.models.tomo_idv_issue_token_req import TomoIdvIssueTokenReq
 from tomo_idv_client.generated.models.tomo_idv_issue_token_res import TomoIdvIssueTokenRes
+from tomo_idv_client.generated.models.uk_start_idv_req import UkStartIdvReq
+from tomo_idv_client.generated.models.us_get_kyc_req import UsGetKycReq
+from tomo_idv_client.generated.models.us_get_union_result_res import UsGetUnionResultRes
+from tomo_idv_client.generated.models.us_start_idv_req import UsStartIdvReq
 
 from tomo_idv_client.generated.api_client import ApiClient, RequestSerialized
 from tomo_idv_client.generated.api_response import ApiResponse
@@ -72,8 +74,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """v1_idv_ca_health_get
+        """(Deprecated) v1_idv_ca_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -96,6 +99,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/ca/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_health_get_serialize(
             _request_auth=_request_auth,
@@ -134,8 +138,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """v1_idv_ca_health_get
+        """(Deprecated) v1_idv_ca_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -158,6 +163,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/ca/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_health_get_serialize(
             _request_auth=_request_auth,
@@ -196,8 +202,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_ca_health_get
+        """(Deprecated) v1_idv_ca_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -220,6 +227,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/ca/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_health_get_serialize(
             _request_auth=_request_auth,
@@ -302,7 +310,7 @@ class DefaultApi:
     def v1_idv_ca_kyc_get_post(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -315,14 +323,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, str]:
-        """v1_idv_ca_kyc_get_post
+    ) -> UsGetUnionResultRes:
+        """(Deprecated) v1_idv_ca_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=ca.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -344,10 +353,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/ca/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -355,7 +365,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -373,7 +383,7 @@ class DefaultApi:
     def v1_idv_ca_kyc_get_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -386,14 +396,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, str]]:
-        """v1_idv_ca_kyc_get_post
+    ) -> ApiResponse[UsGetUnionResultRes]:
+        """(Deprecated) v1_idv_ca_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=ca.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -415,10 +426,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/ca/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -426,7 +438,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -444,7 +456,7 @@ class DefaultApi:
     def v1_idv_ca_kyc_get_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -458,13 +470,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_ca_kyc_get_post
+        """(Deprecated) v1_idv_ca_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=ca.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -486,10 +499,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/ca/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -497,7 +511,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -510,7 +524,7 @@ class DefaultApi:
     def _v1_idv_ca_kyc_get_post_serialize(
         self,
         authorization,
-        plaid_get_kyc_req,
+        us_get_kyc_req,
         _request_auth,
         _content_type,
         _headers,
@@ -538,8 +552,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if plaid_get_kyc_req is not None:
-            _body_params = plaid_get_kyc_req
+        if us_get_kyc_req is not None:
+            _body_params = us_get_kyc_req
 
 
         # set the HTTP header `Accept`
@@ -590,7 +604,7 @@ class DefaultApi:
     def v1_idv_ca_start_post(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        ca_start_idv_req: Optional[CaStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -603,14 +617,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PlaidStartIdvRes:
-        """v1_idv_ca_start_post
+    ) -> StartIdvRes:
+        """(Deprecated) v1_idv_ca_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=ca.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param ca_start_idv_req:
+        :type ca_start_idv_req: CaStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -632,10 +647,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/ca/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            ca_start_idv_req=ca_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -643,7 +659,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -661,7 +677,7 @@ class DefaultApi:
     def v1_idv_ca_start_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        ca_start_idv_req: Optional[CaStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -674,14 +690,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PlaidStartIdvRes]:
-        """v1_idv_ca_start_post
+    ) -> ApiResponse[StartIdvRes]:
+        """(Deprecated) v1_idv_ca_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=ca.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param ca_start_idv_req:
+        :type ca_start_idv_req: CaStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -703,10 +720,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/ca/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            ca_start_idv_req=ca_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -714,7 +732,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -732,7 +750,7 @@ class DefaultApi:
     def v1_idv_ca_start_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        ca_start_idv_req: Optional[CaStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -746,13 +764,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_ca_start_post
+        """(Deprecated) v1_idv_ca_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=ca.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param ca_start_idv_req:
+        :type ca_start_idv_req: CaStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -774,10 +793,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/ca/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            ca_start_idv_req=ca_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -785,7 +805,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -798,7 +818,7 @@ class DefaultApi:
     def _v1_idv_ca_start_post_serialize(
         self,
         authorization,
-        plaid_start_idv_req,
+        ca_start_idv_req,
         _request_auth,
         _content_type,
         _headers,
@@ -826,8 +846,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if plaid_start_idv_req is not None:
-            _body_params = plaid_start_idv_req
+        if ca_start_idv_req is not None:
+            _body_params = ca_start_idv_req
 
 
         # set the HTTP header `Accept`
@@ -875,279 +895,6 @@ class DefaultApi:
 
 
     @validate_call
-    def v1_idv_cn_cookie_start_post(
-        self,
-        tencent_start_req: Optional[TencentStartReq] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TencentStartIdvRes:
-        """v1_idv_cn_cookie_start_post
-
-
-        :param tencent_start_req:
-        :type tencent_start_req: TencentStartReq
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_idv_cn_cookie_start_post_serialize(
-            tencent_start_req=tencent_start_req,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentStartIdvRes",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v1_idv_cn_cookie_start_post_with_http_info(
-        self,
-        tencent_start_req: Optional[TencentStartReq] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TencentStartIdvRes]:
-        """v1_idv_cn_cookie_start_post
-
-
-        :param tencent_start_req:
-        :type tencent_start_req: TencentStartReq
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_idv_cn_cookie_start_post_serialize(
-            tencent_start_req=tencent_start_req,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentStartIdvRes",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v1_idv_cn_cookie_start_post_without_preload_content(
-        self,
-        tencent_start_req: Optional[TencentStartReq] = None,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v1_idv_cn_cookie_start_post
-
-
-        :param tencent_start_req:
-        :type tencent_start_req: TencentStartReq
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_idv_cn_cookie_start_post_serialize(
-            tencent_start_req=tencent_start_req,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentStartIdvRes",
-            '400': None,
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v1_idv_cn_cookie_start_post_serialize(
-        self,
-        tencent_start_req,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if tencent_start_req is not None:
-            _body_params = tencent_start_req
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json;charset=utf-8'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json;charset=utf-8'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v1/idv/cn/cookie/start',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def v1_idv_cn_health_get(
         self,
         _request_timeout: Union[
@@ -1163,8 +910,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """v1_idv_cn_health_get
+        """(Deprecated) v1_idv_cn_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1187,6 +935,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/cn/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_health_get_serialize(
             _request_auth=_request_auth,
@@ -1225,8 +974,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """v1_idv_cn_health_get
+        """(Deprecated) v1_idv_cn_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1249,6 +999,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/cn/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_health_get_serialize(
             _request_auth=_request_auth,
@@ -1287,8 +1038,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_cn_health_get
+        """(Deprecated) v1_idv_cn_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1311,6 +1063,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/cn/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_health_get_serialize(
             _request_auth=_request_auth,
@@ -1393,7 +1146,7 @@ class DefaultApi:
     def v1_idv_cn_kyc_get_post(
         self,
         authorization: Optional[StrictStr] = None,
-        tencent_get_kyc_req: Optional[TencentGetKycReq] = None,
+        cn_get_kyc_req: Optional[CnGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1406,14 +1159,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TencentGetUnionResultRes:
-        """v1_idv_cn_kyc_get_post
+    ) -> CnGetUnionResultRes:
+        """(Deprecated) v1_idv_cn_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=cn.
 
         :param authorization:
         :type authorization: str
-        :param tencent_get_kyc_req:
-        :type tencent_get_kyc_req: TencentGetKycReq
+        :param cn_get_kyc_req:
+        :type cn_get_kyc_req: CnGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1435,10 +1189,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_kyc_get_post_serialize(
             authorization=authorization,
-            tencent_get_kyc_req=tencent_get_kyc_req,
+            cn_get_kyc_req=cn_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1446,7 +1201,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentGetUnionResultRes",
+            '200': "CnGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -1464,7 +1219,7 @@ class DefaultApi:
     def v1_idv_cn_kyc_get_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        tencent_get_kyc_req: Optional[TencentGetKycReq] = None,
+        cn_get_kyc_req: Optional[CnGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1477,14 +1232,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TencentGetUnionResultRes]:
-        """v1_idv_cn_kyc_get_post
+    ) -> ApiResponse[CnGetUnionResultRes]:
+        """(Deprecated) v1_idv_cn_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=cn.
 
         :param authorization:
         :type authorization: str
-        :param tencent_get_kyc_req:
-        :type tencent_get_kyc_req: TencentGetKycReq
+        :param cn_get_kyc_req:
+        :type cn_get_kyc_req: CnGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1506,10 +1262,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_kyc_get_post_serialize(
             authorization=authorization,
-            tencent_get_kyc_req=tencent_get_kyc_req,
+            cn_get_kyc_req=cn_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1517,7 +1274,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentGetUnionResultRes",
+            '200': "CnGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -1535,7 +1292,7 @@ class DefaultApi:
     def v1_idv_cn_kyc_get_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        tencent_get_kyc_req: Optional[TencentGetKycReq] = None,
+        cn_get_kyc_req: Optional[CnGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1549,13 +1306,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_cn_kyc_get_post
+        """(Deprecated) v1_idv_cn_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=cn.
 
         :param authorization:
         :type authorization: str
-        :param tencent_get_kyc_req:
-        :type tencent_get_kyc_req: TencentGetKycReq
+        :param cn_get_kyc_req:
+        :type cn_get_kyc_req: CnGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1577,10 +1335,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_kyc_get_post_serialize(
             authorization=authorization,
-            tencent_get_kyc_req=tencent_get_kyc_req,
+            cn_get_kyc_req=cn_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1588,7 +1347,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentGetUnionResultRes",
+            '200': "CnGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -1601,7 +1360,7 @@ class DefaultApi:
     def _v1_idv_cn_kyc_get_post_serialize(
         self,
         authorization,
-        tencent_get_kyc_req,
+        cn_get_kyc_req,
         _request_auth,
         _content_type,
         _headers,
@@ -1629,8 +1388,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if tencent_get_kyc_req is not None:
-            _body_params = tencent_get_kyc_req
+        if cn_get_kyc_req is not None:
+            _body_params = cn_get_kyc_req
 
 
         # set the HTTP header `Accept`
@@ -1678,252 +1437,10 @@ class DefaultApi:
 
 
     @validate_call
-    def v1_idv_cn_result_web_post(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
-        """v1_idv_cn_result_web_post
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_idv_cn_result_web_post_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v1_idv_cn_result_web_post_with_http_info(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
-        """v1_idv_cn_result_web_post
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_idv_cn_result_web_post_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v1_idv_cn_result_web_post_without_preload_content(
-        self,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v1_idv_cn_result_web_post
-
-
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_idv_cn_result_web_post_serialize(
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v1_idv_cn_result_web_post_serialize(
-        self,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json;charset=utf-8'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v1/idv/cn/result/web',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def v1_idv_cn_start_post(
         self,
         authorization: Optional[StrictStr] = None,
-        tencent_start_req: Optional[TencentStartReq] = None,
+        cn_start_idv_req: Optional[CnStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1936,14 +1453,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> TencentStartIdvRes:
-        """v1_idv_cn_start_post
+    ) -> StartIdvRes:
+        """(Deprecated) v1_idv_cn_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=cn.
 
         :param authorization:
         :type authorization: str
-        :param tencent_start_req:
-        :type tencent_start_req: TencentStartReq
+        :param cn_start_idv_req:
+        :type cn_start_idv_req: CnStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1965,10 +1483,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_start_post_serialize(
             authorization=authorization,
-            tencent_start_req=tencent_start_req,
+            cn_start_idv_req=cn_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1976,7 +1495,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -1994,7 +1513,7 @@ class DefaultApi:
     def v1_idv_cn_start_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        tencent_start_req: Optional[TencentStartReq] = None,
+        cn_start_idv_req: Optional[CnStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2007,14 +1526,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[TencentStartIdvRes]:
-        """v1_idv_cn_start_post
+    ) -> ApiResponse[StartIdvRes]:
+        """(Deprecated) v1_idv_cn_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=cn.
 
         :param authorization:
         :type authorization: str
-        :param tencent_start_req:
-        :type tencent_start_req: TencentStartReq
+        :param cn_start_idv_req:
+        :type cn_start_idv_req: CnStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2036,10 +1556,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_start_post_serialize(
             authorization=authorization,
-            tencent_start_req=tencent_start_req,
+            cn_start_idv_req=cn_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2047,7 +1568,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -2065,7 +1586,7 @@ class DefaultApi:
     def v1_idv_cn_start_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        tencent_start_req: Optional[TencentStartReq] = None,
+        cn_start_idv_req: Optional[CnStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2079,13 +1600,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_cn_start_post
+        """(Deprecated) v1_idv_cn_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=cn.
 
         :param authorization:
         :type authorization: str
-        :param tencent_start_req:
-        :type tencent_start_req: TencentStartReq
+        :param cn_start_idv_req:
+        :type cn_start_idv_req: CnStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2107,10 +1629,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_start_post_serialize(
             authorization=authorization,
-            tencent_start_req=tencent_start_req,
+            cn_start_idv_req=cn_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2118,7 +1641,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "TencentStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -2131,7 +1654,7 @@ class DefaultApi:
     def _v1_idv_cn_start_post_serialize(
         self,
         authorization,
-        tencent_start_req,
+        cn_start_idv_req,
         _request_auth,
         _content_type,
         _headers,
@@ -2159,8 +1682,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if tencent_start_req is not None:
-            _body_params = tencent_start_req
+        if cn_start_idv_req is not None:
+            _body_params = cn_start_idv_req
 
 
         # set the HTTP header `Accept`
@@ -2225,8 +1748,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> TomoIdvIssueTokenRes:
-        """v1_idv_cn_token_post
+        """(Deprecated) v1_idv_cn_token_post
 
+        [DEPRECATED] Use the OAuth2 token endpoint.
 
         :param authorization:
         :type authorization: str
@@ -2253,6 +1777,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/token is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_token_post_serialize(
             authorization=authorization,
@@ -2296,8 +1821,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[TomoIdvIssueTokenRes]:
-        """v1_idv_cn_token_post
+        """(Deprecated) v1_idv_cn_token_post
 
+        [DEPRECATED] Use the OAuth2 token endpoint.
 
         :param authorization:
         :type authorization: str
@@ -2324,6 +1850,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/token is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_token_post_serialize(
             authorization=authorization,
@@ -2367,8 +1894,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_cn_token_post
+        """(Deprecated) v1_idv_cn_token_post
 
+        [DEPRECATED] Use the OAuth2 token endpoint.
 
         :param authorization:
         :type authorization: str
@@ -2395,6 +1923,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/cn/token is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_token_post_serialize(
             authorization=authorization,
@@ -2496,7 +2025,7 @@ class DefaultApi:
 
 
     @validate_call
-    def v1_idv_jp_health_get(
+    def v1_idv_health_get(
         self,
         _request_timeout: Union[
             None,
@@ -2511,7 +2040,7 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """v1_idv_jp_health_get
+        """v1_idv_health_get
 
 
         :param _request_timeout: timeout setting for this request. If one
@@ -2535,6 +2064,250 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+
+        _param = self._v1_idv_health_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "str",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_idv_health_get_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[str]:
+        """v1_idv_health_get
+
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_idv_health_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "str",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_idv_health_get_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_idv_health_get
+
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_idv_health_get_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "str",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_idv_health_get_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json;charset=utf-8'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/idv/health',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_idv_jp_health_get(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> str:
+        """(Deprecated) v1_idv_jp_health_get
+
+        [DEPRECATED] Use /v1/idv/health.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+        warnings.warn("GET /v1/idv/jp/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_health_get_serialize(
             _request_auth=_request_auth,
@@ -2573,8 +2346,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """v1_idv_jp_health_get
+        """(Deprecated) v1_idv_jp_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2597,6 +2371,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/jp/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_health_get_serialize(
             _request_auth=_request_auth,
@@ -2635,8 +2410,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_jp_health_get
+        """(Deprecated) v1_idv_jp_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -2659,6 +2435,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/jp/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_health_get_serialize(
             _request_auth=_request_auth,
@@ -2741,7 +2518,7 @@ class DefaultApi:
     def v1_idv_jp_kyc_get_post(
         self,
         authorization: Optional[StrictStr] = None,
-        liquid_get_kyc_req: Optional[LiquidGetKycReq] = None,
+        jp_get_kyc_req: Optional[JpGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2754,14 +2531,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> LiquidGetUnionResultRes:
-        """v1_idv_jp_kyc_get_post
+    ) -> JpGetUnionResultRes:
+        """(Deprecated) v1_idv_jp_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=jp.
 
         :param authorization:
         :type authorization: str
-        :param liquid_get_kyc_req:
-        :type liquid_get_kyc_req: LiquidGetKycReq
+        :param jp_get_kyc_req:
+        :type jp_get_kyc_req: JpGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2783,10 +2561,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/jp/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_kyc_get_post_serialize(
             authorization=authorization,
-            liquid_get_kyc_req=liquid_get_kyc_req,
+            jp_get_kyc_req=jp_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2794,7 +2573,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "LiquidGetUnionResultRes",
+            '200': "JpGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -2812,7 +2591,7 @@ class DefaultApi:
     def v1_idv_jp_kyc_get_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        liquid_get_kyc_req: Optional[LiquidGetKycReq] = None,
+        jp_get_kyc_req: Optional[JpGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2825,14 +2604,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[LiquidGetUnionResultRes]:
-        """v1_idv_jp_kyc_get_post
+    ) -> ApiResponse[JpGetUnionResultRes]:
+        """(Deprecated) v1_idv_jp_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=jp.
 
         :param authorization:
         :type authorization: str
-        :param liquid_get_kyc_req:
-        :type liquid_get_kyc_req: LiquidGetKycReq
+        :param jp_get_kyc_req:
+        :type jp_get_kyc_req: JpGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2854,10 +2634,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/jp/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_kyc_get_post_serialize(
             authorization=authorization,
-            liquid_get_kyc_req=liquid_get_kyc_req,
+            jp_get_kyc_req=jp_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2865,7 +2646,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "LiquidGetUnionResultRes",
+            '200': "JpGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -2883,7 +2664,7 @@ class DefaultApi:
     def v1_idv_jp_kyc_get_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        liquid_get_kyc_req: Optional[LiquidGetKycReq] = None,
+        jp_get_kyc_req: Optional[JpGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2897,13 +2678,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_jp_kyc_get_post
+        """(Deprecated) v1_idv_jp_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=jp.
 
         :param authorization:
         :type authorization: str
-        :param liquid_get_kyc_req:
-        :type liquid_get_kyc_req: LiquidGetKycReq
+        :param jp_get_kyc_req:
+        :type jp_get_kyc_req: JpGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2925,10 +2707,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/jp/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_kyc_get_post_serialize(
             authorization=authorization,
-            liquid_get_kyc_req=liquid_get_kyc_req,
+            jp_get_kyc_req=jp_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2936,7 +2719,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "LiquidGetUnionResultRes",
+            '200': "JpGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -2949,7 +2732,7 @@ class DefaultApi:
     def _v1_idv_jp_kyc_get_post_serialize(
         self,
         authorization,
-        liquid_get_kyc_req,
+        jp_get_kyc_req,
         _request_auth,
         _content_type,
         _headers,
@@ -2977,8 +2760,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if liquid_get_kyc_req is not None:
-            _body_params = liquid_get_kyc_req
+        if jp_get_kyc_req is not None:
+            _body_params = jp_get_kyc_req
 
 
         # set the HTTP header `Accept`
@@ -3029,7 +2812,7 @@ class DefaultApi:
     def v1_idv_jp_start_post(
         self,
         authorization: Optional[StrictStr] = None,
-        liquid_start_idv_req: Optional[LiquidStartIdvReq] = None,
+        jp_start_idv_req: Optional[JpStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3042,14 +2825,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> LiquidIntegratedAppRes:
-        """v1_idv_jp_start_post
+    ) -> StartIdvRes:
+        """(Deprecated) v1_idv_jp_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=jp.
 
         :param authorization:
         :type authorization: str
-        :param liquid_start_idv_req:
-        :type liquid_start_idv_req: LiquidStartIdvReq
+        :param jp_start_idv_req:
+        :type jp_start_idv_req: JpStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3071,10 +2855,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/jp/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_start_post_serialize(
             authorization=authorization,
-            liquid_start_idv_req=liquid_start_idv_req,
+            jp_start_idv_req=jp_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3082,7 +2867,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "LiquidIntegratedAppRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -3100,7 +2885,7 @@ class DefaultApi:
     def v1_idv_jp_start_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        liquid_start_idv_req: Optional[LiquidStartIdvReq] = None,
+        jp_start_idv_req: Optional[JpStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3113,14 +2898,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[LiquidIntegratedAppRes]:
-        """v1_idv_jp_start_post
+    ) -> ApiResponse[StartIdvRes]:
+        """(Deprecated) v1_idv_jp_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=jp.
 
         :param authorization:
         :type authorization: str
-        :param liquid_start_idv_req:
-        :type liquid_start_idv_req: LiquidStartIdvReq
+        :param jp_start_idv_req:
+        :type jp_start_idv_req: JpStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3142,10 +2928,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/jp/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_start_post_serialize(
             authorization=authorization,
-            liquid_start_idv_req=liquid_start_idv_req,
+            jp_start_idv_req=jp_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3153,7 +2940,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "LiquidIntegratedAppRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -3171,7 +2958,7 @@ class DefaultApi:
     def v1_idv_jp_start_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        liquid_start_idv_req: Optional[LiquidStartIdvReq] = None,
+        jp_start_idv_req: Optional[JpStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3185,13 +2972,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_jp_start_post
+        """(Deprecated) v1_idv_jp_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=jp.
 
         :param authorization:
         :type authorization: str
-        :param liquid_start_idv_req:
-        :type liquid_start_idv_req: LiquidStartIdvReq
+        :param jp_start_idv_req:
+        :type jp_start_idv_req: JpStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -3213,10 +3001,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/jp/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_start_post_serialize(
             authorization=authorization,
-            liquid_start_idv_req=liquid_start_idv_req,
+            jp_start_idv_req=jp_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -3224,7 +3013,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "LiquidIntegratedAppRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -3237,7 +3026,7 @@ class DefaultApi:
     def _v1_idv_jp_start_post_serialize(
         self,
         authorization,
-        liquid_start_idv_req,
+        jp_start_idv_req,
         _request_auth,
         _content_type,
         _headers,
@@ -3265,8 +3054,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if liquid_start_idv_req is not None:
-            _body_params = liquid_start_idv_req
+        if jp_start_idv_req is not None:
+            _body_params = jp_start_idv_req
 
 
         # set the HTTP header `Accept`
@@ -3602,6 +3391,294 @@ class DefaultApi:
 
 
     @validate_call
+    def v1_idv_result_post(
+        self,
+        authorization: Optional[StrictStr] = None,
+        result_req: Optional[ResultReq] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ResultRes:
+        """v1_idv_result_post
+
+
+        :param authorization:
+        :type authorization: str
+        :param result_req:
+        :type result_req: ResultReq
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_idv_result_post_serialize(
+            authorization=authorization,
+            result_req=result_req,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResultRes",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_idv_result_post_with_http_info(
+        self,
+        authorization: Optional[StrictStr] = None,
+        result_req: Optional[ResultReq] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ResultRes]:
+        """v1_idv_result_post
+
+
+        :param authorization:
+        :type authorization: str
+        :param result_req:
+        :type result_req: ResultReq
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_idv_result_post_serialize(
+            authorization=authorization,
+            result_req=result_req,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResultRes",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_idv_result_post_without_preload_content(
+        self,
+        authorization: Optional[StrictStr] = None,
+        result_req: Optional[ResultReq] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_idv_result_post
+
+
+        :param authorization:
+        :type authorization: str
+        :param result_req:
+        :type result_req: ResultReq
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_idv_result_post_serialize(
+            authorization=authorization,
+            result_req=result_req,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "ResultRes",
+            '400': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_idv_result_post_serialize(
+        self,
+        authorization,
+        result_req,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if result_req is not None:
+            _body_params = result_req
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json;charset=utf-8'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json;charset=utf-8'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/idv/result',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v1_idv_sessions_start_post(
         self,
         authorization: Optional[StrictStr] = None,
@@ -3619,8 +3696,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> SessionStartRes:
-        """v1_idv_sessions_start_post
+        """(Deprecated) v1_idv_sessions_start_post
 
+        [DEPRECATED] Use /v1/idv/start.
 
         :param authorization:
         :type authorization: str
@@ -3647,6 +3725,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/sessions/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_sessions_start_post_serialize(
             authorization=authorization,
@@ -3690,8 +3769,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[SessionStartRes]:
-        """v1_idv_sessions_start_post
+        """(Deprecated) v1_idv_sessions_start_post
 
+        [DEPRECATED] Use /v1/idv/start.
 
         :param authorization:
         :type authorization: str
@@ -3718,6 +3798,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/sessions/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_sessions_start_post_serialize(
             authorization=authorization,
@@ -3761,8 +3842,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_sessions_start_post
+        """(Deprecated) v1_idv_sessions_start_post
 
+        [DEPRECATED] Use /v1/idv/start.
 
         :param authorization:
         :type authorization: str
@@ -3789,6 +3871,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/sessions/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_sessions_start_post_serialize(
             authorization=authorization,
@@ -4193,8 +4276,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """v1_idv_uk_health_get
+        """(Deprecated) v1_idv_uk_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4217,6 +4301,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/uk/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_health_get_serialize(
             _request_auth=_request_auth,
@@ -4255,8 +4340,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """v1_idv_uk_health_get
+        """(Deprecated) v1_idv_uk_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4279,6 +4365,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/uk/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_health_get_serialize(
             _request_auth=_request_auth,
@@ -4317,8 +4404,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_uk_health_get
+        """(Deprecated) v1_idv_uk_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4341,6 +4429,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/uk/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_health_get_serialize(
             _request_auth=_request_auth,
@@ -4423,7 +4512,7 @@ class DefaultApi:
     def v1_idv_uk_kyc_get_post(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4436,14 +4525,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, str]:
-        """v1_idv_uk_kyc_get_post
+    ) -> UsGetUnionResultRes:
+        """(Deprecated) v1_idv_uk_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=uk.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4465,10 +4555,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/uk/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4476,7 +4567,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -4494,7 +4585,7 @@ class DefaultApi:
     def v1_idv_uk_kyc_get_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4507,14 +4598,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, str]]:
-        """v1_idv_uk_kyc_get_post
+    ) -> ApiResponse[UsGetUnionResultRes]:
+        """(Deprecated) v1_idv_uk_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=uk.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4536,10 +4628,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/uk/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4547,7 +4640,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -4565,7 +4658,7 @@ class DefaultApi:
     def v1_idv_uk_kyc_get_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4579,13 +4672,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_uk_kyc_get_post
+        """(Deprecated) v1_idv_uk_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=uk.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4607,10 +4701,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/uk/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4618,7 +4713,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -4631,7 +4726,7 @@ class DefaultApi:
     def _v1_idv_uk_kyc_get_post_serialize(
         self,
         authorization,
-        plaid_get_kyc_req,
+        us_get_kyc_req,
         _request_auth,
         _content_type,
         _headers,
@@ -4659,8 +4754,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if plaid_get_kyc_req is not None:
-            _body_params = plaid_get_kyc_req
+        if us_get_kyc_req is not None:
+            _body_params = us_get_kyc_req
 
 
         # set the HTTP header `Accept`
@@ -4711,7 +4806,7 @@ class DefaultApi:
     def v1_idv_uk_start_post(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        uk_start_idv_req: Optional[UkStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4724,14 +4819,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PlaidStartIdvRes:
-        """v1_idv_uk_start_post
+    ) -> StartIdvRes:
+        """(Deprecated) v1_idv_uk_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=uk.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param uk_start_idv_req:
+        :type uk_start_idv_req: UkStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4753,10 +4849,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/uk/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            uk_start_idv_req=uk_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4764,7 +4861,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -4782,7 +4879,7 @@ class DefaultApi:
     def v1_idv_uk_start_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        uk_start_idv_req: Optional[UkStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4795,14 +4892,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PlaidStartIdvRes]:
-        """v1_idv_uk_start_post
+    ) -> ApiResponse[StartIdvRes]:
+        """(Deprecated) v1_idv_uk_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=uk.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param uk_start_idv_req:
+        :type uk_start_idv_req: UkStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4824,10 +4922,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/uk/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            uk_start_idv_req=uk_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4835,7 +4934,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -4853,7 +4952,7 @@ class DefaultApi:
     def v1_idv_uk_start_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        uk_start_idv_req: Optional[UkStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4867,13 +4966,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_uk_start_post
+        """(Deprecated) v1_idv_uk_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=uk.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param uk_start_idv_req:
+        :type uk_start_idv_req: UkStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -4895,10 +4995,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/uk/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            uk_start_idv_req=uk_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -4906,7 +5007,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -4919,7 +5020,7 @@ class DefaultApi:
     def _v1_idv_uk_start_post_serialize(
         self,
         authorization,
-        plaid_start_idv_req,
+        uk_start_idv_req,
         _request_auth,
         _content_type,
         _headers,
@@ -4947,8 +5048,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if plaid_start_idv_req is not None:
-            _body_params = plaid_start_idv_req
+        if uk_start_idv_req is not None:
+            _body_params = uk_start_idv_req
 
 
         # set the HTTP header `Accept`
@@ -5011,8 +5112,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> str:
-        """v1_idv_us_health_get
+        """(Deprecated) v1_idv_us_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5035,6 +5137,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/us/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_health_get_serialize(
             _request_auth=_request_auth,
@@ -5073,8 +5176,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[str]:
-        """v1_idv_us_health_get
+        """(Deprecated) v1_idv_us_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5097,6 +5201,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/us/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_health_get_serialize(
             _request_auth=_request_auth,
@@ -5135,8 +5240,9 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_us_health_get
+        """(Deprecated) v1_idv_us_health_get
 
+        [DEPRECATED] Use /v1/idv/health.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -5159,6 +5265,7 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("GET /v1/idv/us/health is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_health_get_serialize(
             _request_auth=_request_auth,
@@ -5241,7 +5348,7 @@ class DefaultApi:
     def v1_idv_us_kyc_get_post(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5254,14 +5361,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Dict[str, str]:
-        """v1_idv_us_kyc_get_post
+    ) -> UsGetUnionResultRes:
+        """(Deprecated) v1_idv_us_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=us.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5283,10 +5391,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/us/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5294,7 +5403,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -5312,7 +5421,7 @@ class DefaultApi:
     def v1_idv_us_kyc_get_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5325,14 +5434,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Dict[str, str]]:
-        """v1_idv_us_kyc_get_post
+    ) -> ApiResponse[UsGetUnionResultRes]:
+        """(Deprecated) v1_idv_us_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=us.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5354,10 +5464,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/us/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5365,7 +5476,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -5383,7 +5494,7 @@ class DefaultApi:
     def v1_idv_us_kyc_get_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_get_kyc_req: Optional[PlaidGetKycReq] = None,
+        us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5397,13 +5508,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_us_kyc_get_post
+        """(Deprecated) v1_idv_us_kyc_get_post
 
+        [DEPRECATED] Use /v1/idv/result with country=us.
 
         :param authorization:
         :type authorization: str
-        :param plaid_get_kyc_req:
-        :type plaid_get_kyc_req: PlaidGetKycReq
+        :param us_get_kyc_req:
+        :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5425,10 +5537,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/us/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_kyc_get_post_serialize(
             authorization=authorization,
-            plaid_get_kyc_req=plaid_get_kyc_req,
+            us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5436,7 +5549,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Dict[str, str]",
+            '200': "UsGetUnionResultRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -5449,7 +5562,7 @@ class DefaultApi:
     def _v1_idv_us_kyc_get_post_serialize(
         self,
         authorization,
-        plaid_get_kyc_req,
+        us_get_kyc_req,
         _request_auth,
         _content_type,
         _headers,
@@ -5477,8 +5590,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if plaid_get_kyc_req is not None:
-            _body_params = plaid_get_kyc_req
+        if us_get_kyc_req is not None:
+            _body_params = us_get_kyc_req
 
 
         # set the HTTP header `Accept`
@@ -5529,7 +5642,7 @@ class DefaultApi:
     def v1_idv_us_start_post(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        us_start_idv_req: Optional[UsStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5542,14 +5655,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PlaidStartIdvRes:
-        """v1_idv_us_start_post
+    ) -> StartIdvRes:
+        """(Deprecated) v1_idv_us_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=us.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param us_start_idv_req:
+        :type us_start_idv_req: UsStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5571,10 +5685,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/us/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            us_start_idv_req=us_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5582,7 +5697,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -5600,7 +5715,7 @@ class DefaultApi:
     def v1_idv_us_start_post_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        us_start_idv_req: Optional[UsStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5613,14 +5728,15 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PlaidStartIdvRes]:
-        """v1_idv_us_start_post
+    ) -> ApiResponse[StartIdvRes]:
+        """(Deprecated) v1_idv_us_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=us.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param us_start_idv_req:
+        :type us_start_idv_req: UsStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5642,10 +5758,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/us/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            us_start_idv_req=us_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5653,7 +5770,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -5671,7 +5788,7 @@ class DefaultApi:
     def v1_idv_us_start_post_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
-        plaid_start_idv_req: Optional[PlaidStartIdvReq] = None,
+        us_start_idv_req: Optional[UsStartIdvReq] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5685,13 +5802,14 @@ class DefaultApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """v1_idv_us_start_post
+        """(Deprecated) v1_idv_us_start_post
 
+        [DEPRECATED] Use /v1/idv/start with country=us.
 
         :param authorization:
         :type authorization: str
-        :param plaid_start_idv_req:
-        :type plaid_start_idv_req: PlaidStartIdvReq
+        :param us_start_idv_req:
+        :type us_start_idv_req: UsStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5713,10 +5831,11 @@ class DefaultApi:
         :type _host_index: int, optional
         :return: Returns the result object.
         """ # noqa: E501
+        warnings.warn("POST /v1/idv/us/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_start_post_serialize(
             authorization=authorization,
-            plaid_start_idv_req=plaid_start_idv_req,
+            us_start_idv_req=us_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5724,7 +5843,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PlaidStartIdvRes",
+            '200': "StartIdvRes",
             '400': None,
         }
         response_data = self.api_client.call_api(
@@ -5737,7 +5856,7 @@ class DefaultApi:
     def _v1_idv_us_start_post_serialize(
         self,
         authorization,
-        plaid_start_idv_req,
+        us_start_idv_req,
         _request_auth,
         _content_type,
         _headers,
@@ -5765,8 +5884,8 @@ class DefaultApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
-        if plaid_start_idv_req is not None:
-            _body_params = plaid_start_idv_req
+        if us_start_idv_req is not None:
+            _body_params = us_start_idv_req
 
 
         # set the HTTP header `Accept`

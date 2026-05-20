@@ -17,24 +17,32 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from tomo_idv_client.generated.models.country import Country
-from tomo_idv_client.generated.models.kyc_policy import KycPolicy
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class StartIdvReq(BaseModel):
+class CnGetKycRes(BaseModel):
     """
-    StartIdvReq
+    CnGetKycRes
     """ # noqa: E501
-    callback_url: StrictStr
-    country: Optional[Country] = None
-    email: Optional[StrictStr] = None
-    kyc_policy: Optional[KycPolicy] = None
-    user_id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["callback_url", "country", "email", "kyc_policy", "user_id"]
+    address: Optional[StrictStr] = None
+    date_of_birth: Optional[StrictStr] = None
+    document_type: Optional[StrictStr] = None
+    face_compare_passed: Optional[StrictBool] = None
+    family_name: Optional[StrictStr] = None
+    full_name: Optional[StrictStr] = None
+    given_name: Optional[StrictStr] = None
+    id_number: Optional[StrictStr] = None
+    issuing_country: Optional[StrictStr] = None
+    liveness_passed: Optional[StrictBool] = None
+    nationality: Optional[StrictStr] = None
+    ocr_passed: Optional[StrictBool] = None
+    sex: Optional[StrictStr] = None
+    similarity: Optional[Union[StrictFloat, StrictInt]] = None
+    status: StrictStr
+    __properties: ClassVar[List[str]] = ["address", "date_of_birth", "document_type", "face_compare_passed", "family_name", "full_name", "given_name", "id_number", "issuing_country", "liveness_passed", "nationality", "ocr_passed", "sex", "similarity", "status"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -54,7 +62,7 @@ class StartIdvReq(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StartIdvReq from a JSON string"""
+        """Create an instance of CnGetKycRes from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,14 +83,11 @@ class StartIdvReq(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of kyc_policy
-        if self.kyc_policy:
-            _dict['kyc_policy'] = self.kyc_policy.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StartIdvReq from a dict"""
+        """Create an instance of CnGetKycRes from a dict"""
         if obj is None:
             return None
 
@@ -90,11 +95,21 @@ class StartIdvReq(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "callback_url": obj.get("callback_url"),
-            "country": obj.get("country"),
-            "email": obj.get("email"),
-            "kyc_policy": KycPolicy.from_dict(obj["kyc_policy"]) if obj.get("kyc_policy") is not None else None,
-            "user_id": obj.get("user_id")
+            "address": obj.get("address"),
+            "date_of_birth": obj.get("date_of_birth"),
+            "document_type": obj.get("document_type"),
+            "face_compare_passed": obj.get("face_compare_passed"),
+            "family_name": obj.get("family_name"),
+            "full_name": obj.get("full_name"),
+            "given_name": obj.get("given_name"),
+            "id_number": obj.get("id_number"),
+            "issuing_country": obj.get("issuing_country"),
+            "liveness_passed": obj.get("liveness_passed"),
+            "nationality": obj.get("nationality"),
+            "ocr_passed": obj.get("ocr_passed"),
+            "sex": obj.get("sex"),
+            "similarity": obj.get("similarity"),
+            "status": obj.get("status")
         })
         return _obj
 
