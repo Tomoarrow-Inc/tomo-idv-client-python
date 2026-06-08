@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -27,10 +27,11 @@ class KycPolicy(BaseModel):
     """
     KycPolicy
     """ # noqa: E501
-    method: StrictStr
-    owner_assurance: Dict[str, Any]
-    subject: Dict[str, Any]
-    __properties: ClassVar[List[str]] = ["method", "owner_assurance", "subject"]
+    method: Optional[StrictStr] = None
+    owner_assurance: Optional[Dict[str, Any]] = None
+    preset: Optional[StrictStr] = None
+    subject: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["method", "owner_assurance", "preset", "subject"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,6 +86,7 @@ class KycPolicy(BaseModel):
         _obj = cls.model_validate({
             "method": obj.get("method"),
             "owner_assurance": obj.get("owner_assurance"),
+            "preset": obj.get("preset"),
             "subject": obj.get("subject")
         })
         return _obj

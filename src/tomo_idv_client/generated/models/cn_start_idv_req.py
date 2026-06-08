@@ -27,12 +27,11 @@ class CnStartIdvReq(BaseModel):
     """
     CnStartIdvReq
     """ # noqa: E501
-    best_frame_base64: Optional[StrictStr] = None
     callback_url: Optional[StrictStr] = None
-    card_image_base64: Optional[StrictStr] = None
-    kyc_policy_id: Optional[StrictStr] = None
+    redirect_url: Optional[StrictStr] = None
     user_id: StrictStr
-    __properties: ClassVar[List[str]] = ["best_frame_base64", "callback_url", "card_image_base64", "kyc_policy_id", "user_id"]
+    webhook_url: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["callback_url", "redirect_url", "user_id", "webhook_url"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,11 +84,10 @@ class CnStartIdvReq(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "best_frame_base64": obj.get("best_frame_base64"),
             "callback_url": obj.get("callback_url"),
-            "card_image_base64": obj.get("card_image_base64"),
-            "kyc_policy_id": obj.get("kyc_policy_id"),
-            "user_id": obj.get("user_id")
+            "redirect_url": obj.get("redirect_url"),
+            "user_id": obj.get("user_id"),
+            "webhook_url": obj.get("webhook_url")
         })
         return _obj
 

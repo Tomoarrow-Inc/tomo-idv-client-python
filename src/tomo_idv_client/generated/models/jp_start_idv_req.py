@@ -27,10 +27,11 @@ class JpStartIdvReq(BaseModel):
     """
     JpStartIdvReq
     """ # noqa: E501
-    callback_url: StrictStr
-    kyc_policy_id: Optional[StrictStr] = None
+    callback_url: Optional[StrictStr] = None
+    redirect_url: Optional[StrictStr] = None
     user_id: StrictStr
-    __properties: ClassVar[List[str]] = ["callback_url", "kyc_policy_id", "user_id"]
+    webhook_url: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["callback_url", "redirect_url", "user_id", "webhook_url"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,8 +85,9 @@ class JpStartIdvReq(BaseModel):
 
         _obj = cls.model_validate({
             "callback_url": obj.get("callback_url"),
-            "kyc_policy_id": obj.get("kyc_policy_id"),
-            "user_id": obj.get("user_id")
+            "redirect_url": obj.get("redirect_url"),
+            "user_id": obj.get("user_id"),
+            "webhook_url": obj.get("webhook_url")
         })
         return _obj
 

@@ -309,7 +309,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_ca_kyc_get_post(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -328,8 +327,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=ca.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -356,7 +353,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/ca/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -382,7 +378,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_ca_kyc_get_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -401,8 +396,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=ca.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -429,7 +422,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/ca/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -455,7 +447,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_ca_kyc_get_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -474,8 +465,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=ca.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -502,7 +491,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/ca/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -523,7 +511,6 @@ class DefaultApi:
 
     def _v1_idv_ca_kyc_get_post_serialize(
         self,
-        authorization,
         us_get_kyc_req,
         _request_auth,
         _content_type,
@@ -548,8 +535,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if us_get_kyc_req is not None:
@@ -580,6 +565,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -603,7 +589,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_ca_start_post(
         self,
-        authorization: Optional[StrictStr] = None,
         ca_start_idv_req: Optional[CaStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -622,8 +607,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=ca.
 
-        :param authorization:
-        :type authorization: str
         :param ca_start_idv_req:
         :type ca_start_idv_req: CaStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -650,7 +633,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/ca/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_start_post_serialize(
-            authorization=authorization,
             ca_start_idv_req=ca_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -676,7 +658,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_ca_start_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         ca_start_idv_req: Optional[CaStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -695,8 +676,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=ca.
 
-        :param authorization:
-        :type authorization: str
         :param ca_start_idv_req:
         :type ca_start_idv_req: CaStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -723,7 +702,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/ca/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_start_post_serialize(
-            authorization=authorization,
             ca_start_idv_req=ca_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -749,7 +727,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_ca_start_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         ca_start_idv_req: Optional[CaStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -768,8 +745,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=ca.
 
-        :param authorization:
-        :type authorization: str
         :param ca_start_idv_req:
         :type ca_start_idv_req: CaStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -796,7 +771,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/ca/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_ca_start_post_serialize(
-            authorization=authorization,
             ca_start_idv_req=ca_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -817,7 +791,6 @@ class DefaultApi:
 
     def _v1_idv_ca_start_post_serialize(
         self,
-        authorization,
         ca_start_idv_req,
         _request_auth,
         _content_type,
@@ -842,8 +815,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if ca_start_idv_req is not None:
@@ -874,6 +845,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1145,7 +1117,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_kyc_get_post(
         self,
-        authorization: Optional[StrictStr] = None,
         cn_get_kyc_req: Optional[CnGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -1164,8 +1135,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=cn.
 
-        :param authorization:
-        :type authorization: str
         :param cn_get_kyc_req:
         :type cn_get_kyc_req: CnGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1192,7 +1161,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_kyc_get_post_serialize(
-            authorization=authorization,
             cn_get_kyc_req=cn_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1218,7 +1186,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_kyc_get_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         cn_get_kyc_req: Optional[CnGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -1237,8 +1204,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=cn.
 
-        :param authorization:
-        :type authorization: str
         :param cn_get_kyc_req:
         :type cn_get_kyc_req: CnGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1265,7 +1230,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_kyc_get_post_serialize(
-            authorization=authorization,
             cn_get_kyc_req=cn_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1291,7 +1255,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_kyc_get_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         cn_get_kyc_req: Optional[CnGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -1310,8 +1273,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=cn.
 
-        :param authorization:
-        :type authorization: str
         :param cn_get_kyc_req:
         :type cn_get_kyc_req: CnGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1338,7 +1299,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_kyc_get_post_serialize(
-            authorization=authorization,
             cn_get_kyc_req=cn_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1359,7 +1319,6 @@ class DefaultApi:
 
     def _v1_idv_cn_kyc_get_post_serialize(
         self,
-        authorization,
         cn_get_kyc_req,
         _request_auth,
         _content_type,
@@ -1384,8 +1343,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if cn_get_kyc_req is not None:
@@ -1416,6 +1373,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1439,7 +1397,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_start_post(
         self,
-        authorization: Optional[StrictStr] = None,
         cn_start_idv_req: Optional[CnStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -1458,8 +1415,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=cn.
 
-        :param authorization:
-        :type authorization: str
         :param cn_start_idv_req:
         :type cn_start_idv_req: CnStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1486,7 +1441,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_start_post_serialize(
-            authorization=authorization,
             cn_start_idv_req=cn_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1512,7 +1466,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_start_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         cn_start_idv_req: Optional[CnStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -1531,8 +1484,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=cn.
 
-        :param authorization:
-        :type authorization: str
         :param cn_start_idv_req:
         :type cn_start_idv_req: CnStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1559,7 +1510,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_start_post_serialize(
-            authorization=authorization,
             cn_start_idv_req=cn_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1585,7 +1535,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_start_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         cn_start_idv_req: Optional[CnStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -1604,8 +1553,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=cn.
 
-        :param authorization:
-        :type authorization: str
         :param cn_start_idv_req:
         :type cn_start_idv_req: CnStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1632,7 +1579,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_start_post_serialize(
-            authorization=authorization,
             cn_start_idv_req=cn_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1653,7 +1599,6 @@ class DefaultApi:
 
     def _v1_idv_cn_start_post_serialize(
         self,
-        authorization,
         cn_start_idv_req,
         _request_auth,
         _content_type,
@@ -1678,8 +1623,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if cn_start_idv_req is not None:
@@ -1710,6 +1653,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -1733,7 +1677,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_token_post(
         self,
-        authorization: Optional[StrictStr] = None,
         tomo_idv_issue_token_req: Optional[TomoIdvIssueTokenReq] = None,
         _request_timeout: Union[
             None,
@@ -1752,8 +1695,6 @@ class DefaultApi:
 
         [DEPRECATED] Use the OAuth2 token endpoint.
 
-        :param authorization:
-        :type authorization: str
         :param tomo_idv_issue_token_req:
         :type tomo_idv_issue_token_req: TomoIdvIssueTokenReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1780,7 +1721,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/token is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_token_post_serialize(
-            authorization=authorization,
             tomo_idv_issue_token_req=tomo_idv_issue_token_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1806,7 +1746,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_token_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         tomo_idv_issue_token_req: Optional[TomoIdvIssueTokenReq] = None,
         _request_timeout: Union[
             None,
@@ -1825,8 +1764,6 @@ class DefaultApi:
 
         [DEPRECATED] Use the OAuth2 token endpoint.
 
-        :param authorization:
-        :type authorization: str
         :param tomo_idv_issue_token_req:
         :type tomo_idv_issue_token_req: TomoIdvIssueTokenReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1853,7 +1790,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/token is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_token_post_serialize(
-            authorization=authorization,
             tomo_idv_issue_token_req=tomo_idv_issue_token_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1879,7 +1815,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_cn_token_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         tomo_idv_issue_token_req: Optional[TomoIdvIssueTokenReq] = None,
         _request_timeout: Union[
             None,
@@ -1898,8 +1833,6 @@ class DefaultApi:
 
         [DEPRECATED] Use the OAuth2 token endpoint.
 
-        :param authorization:
-        :type authorization: str
         :param tomo_idv_issue_token_req:
         :type tomo_idv_issue_token_req: TomoIdvIssueTokenReq
         :param _request_timeout: timeout setting for this request. If one
@@ -1926,7 +1859,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/cn/token is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_cn_token_post_serialize(
-            authorization=authorization,
             tomo_idv_issue_token_req=tomo_idv_issue_token_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1947,7 +1879,6 @@ class DefaultApi:
 
     def _v1_idv_cn_token_post_serialize(
         self,
-        authorization,
         tomo_idv_issue_token_req,
         _request_auth,
         _content_type,
@@ -1972,8 +1903,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if tomo_idv_issue_token_req is not None:
@@ -2004,6 +1933,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2517,7 +2447,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_jp_kyc_get_post(
         self,
-        authorization: Optional[StrictStr] = None,
         jp_get_kyc_req: Optional[JpGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -2536,8 +2465,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=jp.
 
-        :param authorization:
-        :type authorization: str
         :param jp_get_kyc_req:
         :type jp_get_kyc_req: JpGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -2564,7 +2491,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/jp/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_kyc_get_post_serialize(
-            authorization=authorization,
             jp_get_kyc_req=jp_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2590,7 +2516,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_jp_kyc_get_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         jp_get_kyc_req: Optional[JpGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -2609,8 +2534,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=jp.
 
-        :param authorization:
-        :type authorization: str
         :param jp_get_kyc_req:
         :type jp_get_kyc_req: JpGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -2637,7 +2560,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/jp/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_kyc_get_post_serialize(
-            authorization=authorization,
             jp_get_kyc_req=jp_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2663,7 +2585,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_jp_kyc_get_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         jp_get_kyc_req: Optional[JpGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -2682,8 +2603,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=jp.
 
-        :param authorization:
-        :type authorization: str
         :param jp_get_kyc_req:
         :type jp_get_kyc_req: JpGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -2710,7 +2629,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/jp/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_kyc_get_post_serialize(
-            authorization=authorization,
             jp_get_kyc_req=jp_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2731,7 +2649,6 @@ class DefaultApi:
 
     def _v1_idv_jp_kyc_get_post_serialize(
         self,
-        authorization,
         jp_get_kyc_req,
         _request_auth,
         _content_type,
@@ -2756,8 +2673,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if jp_get_kyc_req is not None:
@@ -2788,6 +2703,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -2811,7 +2727,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_jp_start_post(
         self,
-        authorization: Optional[StrictStr] = None,
         jp_start_idv_req: Optional[JpStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -2830,8 +2745,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=jp.
 
-        :param authorization:
-        :type authorization: str
         :param jp_start_idv_req:
         :type jp_start_idv_req: JpStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -2858,7 +2771,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/jp/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_start_post_serialize(
-            authorization=authorization,
             jp_start_idv_req=jp_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2884,7 +2796,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_jp_start_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         jp_start_idv_req: Optional[JpStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -2903,8 +2814,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=jp.
 
-        :param authorization:
-        :type authorization: str
         :param jp_start_idv_req:
         :type jp_start_idv_req: JpStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -2931,7 +2840,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/jp/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_start_post_serialize(
-            authorization=authorization,
             jp_start_idv_req=jp_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2957,7 +2865,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_jp_start_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         jp_start_idv_req: Optional[JpStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -2976,8 +2883,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=jp.
 
-        :param authorization:
-        :type authorization: str
         :param jp_start_idv_req:
         :type jp_start_idv_req: JpStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3004,7 +2909,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/jp/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_jp_start_post_serialize(
-            authorization=authorization,
             jp_start_idv_req=jp_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3025,7 +2929,6 @@ class DefaultApi:
 
     def _v1_idv_jp_start_post_serialize(
         self,
-        authorization,
         jp_start_idv_req,
         _request_auth,
         _content_type,
@@ -3050,8 +2953,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if jp_start_idv_req is not None:
@@ -3082,6 +2983,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -3105,7 +3007,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_kyc_get_post(
         self,
-        authorization: Optional[StrictStr] = None,
         get_kyc_req: Optional[GetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -3123,8 +3024,6 @@ class DefaultApi:
         """v1_idv_kyc_get_post
 
 
-        :param authorization:
-        :type authorization: str
         :param get_kyc_req:
         :type get_kyc_req: GetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3150,7 +3049,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_kyc_get_post_serialize(
-            authorization=authorization,
             get_kyc_req=get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3176,7 +3074,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_kyc_get_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         get_kyc_req: Optional[GetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -3194,8 +3091,6 @@ class DefaultApi:
         """v1_idv_kyc_get_post
 
 
-        :param authorization:
-        :type authorization: str
         :param get_kyc_req:
         :type get_kyc_req: GetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3221,7 +3116,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_kyc_get_post_serialize(
-            authorization=authorization,
             get_kyc_req=get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3247,7 +3141,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_kyc_get_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         get_kyc_req: Optional[GetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -3265,8 +3158,6 @@ class DefaultApi:
         """v1_idv_kyc_get_post
 
 
-        :param authorization:
-        :type authorization: str
         :param get_kyc_req:
         :type get_kyc_req: GetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3292,7 +3183,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_kyc_get_post_serialize(
-            authorization=authorization,
             get_kyc_req=get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3313,7 +3203,6 @@ class DefaultApi:
 
     def _v1_idv_kyc_get_post_serialize(
         self,
-        authorization,
         get_kyc_req,
         _request_auth,
         _content_type,
@@ -3338,8 +3227,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if get_kyc_req is not None:
@@ -3370,6 +3257,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -3393,7 +3281,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_result_post(
         self,
-        authorization: Optional[StrictStr] = None,
         result_req: Optional[ResultReq] = None,
         _request_timeout: Union[
             None,
@@ -3411,8 +3298,6 @@ class DefaultApi:
         """v1_idv_result_post
 
 
-        :param authorization:
-        :type authorization: str
         :param result_req:
         :type result_req: ResultReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3438,7 +3323,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_result_post_serialize(
-            authorization=authorization,
             result_req=result_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3464,7 +3348,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_result_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         result_req: Optional[ResultReq] = None,
         _request_timeout: Union[
             None,
@@ -3482,8 +3365,6 @@ class DefaultApi:
         """v1_idv_result_post
 
 
-        :param authorization:
-        :type authorization: str
         :param result_req:
         :type result_req: ResultReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3509,7 +3390,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_result_post_serialize(
-            authorization=authorization,
             result_req=result_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3535,7 +3415,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_result_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         result_req: Optional[ResultReq] = None,
         _request_timeout: Union[
             None,
@@ -3553,8 +3432,6 @@ class DefaultApi:
         """v1_idv_result_post
 
 
-        :param authorization:
-        :type authorization: str
         :param result_req:
         :type result_req: ResultReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3580,7 +3457,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_result_post_serialize(
-            authorization=authorization,
             result_req=result_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3601,7 +3477,6 @@ class DefaultApi:
 
     def _v1_idv_result_post_serialize(
         self,
-        authorization,
         result_req,
         _request_auth,
         _content_type,
@@ -3626,8 +3501,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if result_req is not None:
@@ -3658,6 +3531,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -3681,7 +3555,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_sessions_start_post(
         self,
-        authorization: Optional[StrictStr] = None,
         session_start_req: Optional[SessionStartReq] = None,
         _request_timeout: Union[
             None,
@@ -3700,8 +3573,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start.
 
-        :param authorization:
-        :type authorization: str
         :param session_start_req:
         :type session_start_req: SessionStartReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3728,7 +3599,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/sessions/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_sessions_start_post_serialize(
-            authorization=authorization,
             session_start_req=session_start_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3754,7 +3624,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_sessions_start_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         session_start_req: Optional[SessionStartReq] = None,
         _request_timeout: Union[
             None,
@@ -3773,8 +3642,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start.
 
-        :param authorization:
-        :type authorization: str
         :param session_start_req:
         :type session_start_req: SessionStartReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3801,7 +3668,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/sessions/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_sessions_start_post_serialize(
-            authorization=authorization,
             session_start_req=session_start_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3827,7 +3693,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_sessions_start_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         session_start_req: Optional[SessionStartReq] = None,
         _request_timeout: Union[
             None,
@@ -3846,8 +3711,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start.
 
-        :param authorization:
-        :type authorization: str
         :param session_start_req:
         :type session_start_req: SessionStartReq
         :param _request_timeout: timeout setting for this request. If one
@@ -3874,7 +3737,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/sessions/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_sessions_start_post_serialize(
-            authorization=authorization,
             session_start_req=session_start_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3895,7 +3757,6 @@ class DefaultApi:
 
     def _v1_idv_sessions_start_post_serialize(
         self,
-        authorization,
         session_start_req,
         _request_auth,
         _content_type,
@@ -3920,8 +3781,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if session_start_req is not None:
@@ -3952,6 +3811,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -3975,7 +3835,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_start_post(
         self,
-        authorization: Optional[StrictStr] = None,
         start_idv_req: Optional[StartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -3993,8 +3852,6 @@ class DefaultApi:
         """v1_idv_start_post
 
 
-        :param authorization:
-        :type authorization: str
         :param start_idv_req:
         :type start_idv_req: StartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4020,7 +3877,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_start_post_serialize(
-            authorization=authorization,
             start_idv_req=start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4046,7 +3902,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_start_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         start_idv_req: Optional[StartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -4064,8 +3919,6 @@ class DefaultApi:
         """v1_idv_start_post
 
 
-        :param authorization:
-        :type authorization: str
         :param start_idv_req:
         :type start_idv_req: StartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4091,7 +3944,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_start_post_serialize(
-            authorization=authorization,
             start_idv_req=start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4117,7 +3969,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_start_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         start_idv_req: Optional[StartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -4135,8 +3986,6 @@ class DefaultApi:
         """v1_idv_start_post
 
 
-        :param authorization:
-        :type authorization: str
         :param start_idv_req:
         :type start_idv_req: StartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4162,7 +4011,6 @@ class DefaultApi:
         """ # noqa: E501
 
         _param = self._v1_idv_start_post_serialize(
-            authorization=authorization,
             start_idv_req=start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4183,7 +4031,6 @@ class DefaultApi:
 
     def _v1_idv_start_post_serialize(
         self,
-        authorization,
         start_idv_req,
         _request_auth,
         _content_type,
@@ -4208,8 +4055,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if start_idv_req is not None:
@@ -4240,6 +4085,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -4511,7 +4357,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_uk_kyc_get_post(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -4530,8 +4375,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=uk.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4558,7 +4401,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/uk/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4584,7 +4426,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_uk_kyc_get_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -4603,8 +4444,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=uk.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4631,7 +4470,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/uk/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4657,7 +4495,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_uk_kyc_get_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -4676,8 +4513,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=uk.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4704,7 +4539,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/uk/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4725,7 +4559,6 @@ class DefaultApi:
 
     def _v1_idv_uk_kyc_get_post_serialize(
         self,
-        authorization,
         us_get_kyc_req,
         _request_auth,
         _content_type,
@@ -4750,8 +4583,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if us_get_kyc_req is not None:
@@ -4782,6 +4613,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -4805,7 +4637,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_uk_start_post(
         self,
-        authorization: Optional[StrictStr] = None,
         uk_start_idv_req: Optional[UkStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -4824,8 +4655,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=uk.
 
-        :param authorization:
-        :type authorization: str
         :param uk_start_idv_req:
         :type uk_start_idv_req: UkStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4852,7 +4681,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/uk/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_start_post_serialize(
-            authorization=authorization,
             uk_start_idv_req=uk_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4878,7 +4706,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_uk_start_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         uk_start_idv_req: Optional[UkStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -4897,8 +4724,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=uk.
 
-        :param authorization:
-        :type authorization: str
         :param uk_start_idv_req:
         :type uk_start_idv_req: UkStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4925,7 +4750,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/uk/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_start_post_serialize(
-            authorization=authorization,
             uk_start_idv_req=uk_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -4951,7 +4775,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_uk_start_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         uk_start_idv_req: Optional[UkStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -4970,8 +4793,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=uk.
 
-        :param authorization:
-        :type authorization: str
         :param uk_start_idv_req:
         :type uk_start_idv_req: UkStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -4998,7 +4819,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/uk/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_uk_start_post_serialize(
-            authorization=authorization,
             uk_start_idv_req=uk_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5019,7 +4839,6 @@ class DefaultApi:
 
     def _v1_idv_uk_start_post_serialize(
         self,
-        authorization,
         uk_start_idv_req,
         _request_auth,
         _content_type,
@@ -5044,8 +4863,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if uk_start_idv_req is not None:
@@ -5076,6 +4893,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -5347,7 +5165,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_us_kyc_get_post(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -5366,8 +5183,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=us.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -5394,7 +5209,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/us/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5420,7 +5234,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_us_kyc_get_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -5439,8 +5252,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=us.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -5467,7 +5278,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/us/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5493,7 +5303,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_us_kyc_get_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         us_get_kyc_req: Optional[UsGetKycReq] = None,
         _request_timeout: Union[
             None,
@@ -5512,8 +5321,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/result with country=us.
 
-        :param authorization:
-        :type authorization: str
         :param us_get_kyc_req:
         :type us_get_kyc_req: UsGetKycReq
         :param _request_timeout: timeout setting for this request. If one
@@ -5540,7 +5347,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/us/kyc/get is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_kyc_get_post_serialize(
-            authorization=authorization,
             us_get_kyc_req=us_get_kyc_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5561,7 +5367,6 @@ class DefaultApi:
 
     def _v1_idv_us_kyc_get_post_serialize(
         self,
-        authorization,
         us_get_kyc_req,
         _request_auth,
         _content_type,
@@ -5586,8 +5391,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if us_get_kyc_req is not None:
@@ -5618,6 +5421,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(
@@ -5641,7 +5445,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_us_start_post(
         self,
-        authorization: Optional[StrictStr] = None,
         us_start_idv_req: Optional[UsStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -5660,8 +5463,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=us.
 
-        :param authorization:
-        :type authorization: str
         :param us_start_idv_req:
         :type us_start_idv_req: UsStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -5688,7 +5489,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/us/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_start_post_serialize(
-            authorization=authorization,
             us_start_idv_req=us_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5714,7 +5514,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_us_start_post_with_http_info(
         self,
-        authorization: Optional[StrictStr] = None,
         us_start_idv_req: Optional[UsStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -5733,8 +5532,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=us.
 
-        :param authorization:
-        :type authorization: str
         :param us_start_idv_req:
         :type us_start_idv_req: UsStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -5761,7 +5558,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/us/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_start_post_serialize(
-            authorization=authorization,
             us_start_idv_req=us_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5787,7 +5583,6 @@ class DefaultApi:
     @validate_call
     def v1_idv_us_start_post_without_preload_content(
         self,
-        authorization: Optional[StrictStr] = None,
         us_start_idv_req: Optional[UsStartIdvReq] = None,
         _request_timeout: Union[
             None,
@@ -5806,8 +5601,6 @@ class DefaultApi:
 
         [DEPRECATED] Use /v1/idv/start with country=us.
 
-        :param authorization:
-        :type authorization: str
         :param us_start_idv_req:
         :type us_start_idv_req: UsStartIdvReq
         :param _request_timeout: timeout setting for this request. If one
@@ -5834,7 +5627,6 @@ class DefaultApi:
         warnings.warn("POST /v1/idv/us/start is deprecated.", DeprecationWarning)
 
         _param = self._v1_idv_us_start_post_serialize(
-            authorization=authorization,
             us_start_idv_req=us_start_idv_req,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -5855,7 +5647,6 @@ class DefaultApi:
 
     def _v1_idv_us_start_post_serialize(
         self,
-        authorization,
         us_start_idv_req,
         _request_auth,
         _content_type,
@@ -5880,8 +5671,6 @@ class DefaultApi:
         # process the path parameters
         # process the query parameters
         # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
         if us_start_idv_req is not None:
@@ -5912,6 +5701,7 @@ class DefaultApi:
 
         # authentication setting
         _auth_settings: List[str] = [
+            'bearerAuth'
         ]
 
         return self.api_client.param_serialize(

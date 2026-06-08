@@ -33,8 +33,10 @@ class SessionStartReq(BaseModel):
     country: Optional[Country] = None
     email: Optional[StrictStr] = None
     kyc_policy: Optional[KycPolicy] = None
+    redirect_url: Optional[StrictStr] = None
     user_id: StrictStr
-    __properties: ClassVar[List[str]] = ["callback_url", "country", "email", "kyc_policy", "user_id"]
+    webhook_url: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["callback_url", "country", "email", "kyc_policy", "redirect_url", "user_id", "webhook_url"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -94,7 +96,9 @@ class SessionStartReq(BaseModel):
             "country": obj.get("country"),
             "email": obj.get("email"),
             "kyc_policy": KycPolicy.from_dict(obj["kyc_policy"]) if obj.get("kyc_policy") is not None else None,
-            "user_id": obj.get("user_id")
+            "redirect_url": obj.get("redirect_url"),
+            "user_id": obj.get("user_id"),
+            "webhook_url": obj.get("webhook_url")
         })
         return _obj
 

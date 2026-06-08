@@ -27,11 +27,12 @@ class UsStartIdvReq(BaseModel):
     """
     UsStartIdvReq
     """ # noqa: E501
-    callback_url: StrictStr
+    callback_url: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
-    kyc_policy_id: Optional[StrictStr] = None
+    redirect_url: Optional[StrictStr] = None
     user_id: StrictStr
-    __properties: ClassVar[List[str]] = ["callback_url", "email", "kyc_policy_id", "user_id"]
+    webhook_url: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["callback_url", "email", "redirect_url", "user_id", "webhook_url"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,8 +87,9 @@ class UsStartIdvReq(BaseModel):
         _obj = cls.model_validate({
             "callback_url": obj.get("callback_url"),
             "email": obj.get("email"),
-            "kyc_policy_id": obj.get("kyc_policy_id"),
-            "user_id": obj.get("user_id")
+            "redirect_url": obj.get("redirect_url"),
+            "user_id": obj.get("user_id"),
+            "webhook_url": obj.get("webhook_url")
         })
         return _obj
 
