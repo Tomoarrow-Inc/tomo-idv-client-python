@@ -29,6 +29,11 @@ from tomo_idv_client.generated.models.jp_idv_field import JpIdvField
 from tomo_idv_client.generated.models.jp_start_idv_req import JpStartIdvReq
 from tomo_idv_client.generated.models.kyc_policy import KycPolicy
 from tomo_idv_client.generated.models.launch_kind import LaunchKind
+from tomo_idv_client.generated.models.result_bulk_delete_req import ResultBulkDeleteReq
+from tomo_idv_client.generated.models.result_bulk_delete_res import ResultBulkDeleteRes
+from tomo_idv_client.generated.models.result_delete_req import ResultDeleteReq
+from tomo_idv_client.generated.models.result_delete_res import ResultDeleteRes
+from tomo_idv_client.generated.models.result_delete_status import ResultDeleteStatus
 from tomo_idv_client.generated.models.result_record import ResultRecord
 from tomo_idv_client.generated.models.result_req import ResultReq
 from tomo_idv_client.generated.models.result_res import ResultRes

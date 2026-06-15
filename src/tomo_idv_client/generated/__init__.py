@@ -44,6 +44,11 @@ __all__ = [
     "JpStartIdvReq",
     "KycPolicy",
     "LaunchKind",
+    "ResultBulkDeleteReq",
+    "ResultBulkDeleteRes",
+    "ResultDeleteReq",
+    "ResultDeleteRes",
+    "ResultDeleteStatus",
     "ResultRecord",
     "ResultReq",
     "ResultRes",
@@ -93,6 +98,11 @@ from tomo_idv_client.generated.models.jp_idv_field import JpIdvField as JpIdvFie
 from tomo_idv_client.generated.models.jp_start_idv_req import JpStartIdvReq as JpStartIdvReq
 from tomo_idv_client.generated.models.kyc_policy import KycPolicy as KycPolicy
 from tomo_idv_client.generated.models.launch_kind import LaunchKind as LaunchKind
+from tomo_idv_client.generated.models.result_bulk_delete_req import ResultBulkDeleteReq as ResultBulkDeleteReq
+from tomo_idv_client.generated.models.result_bulk_delete_res import ResultBulkDeleteRes as ResultBulkDeleteRes
+from tomo_idv_client.generated.models.result_delete_req import ResultDeleteReq as ResultDeleteReq
+from tomo_idv_client.generated.models.result_delete_res import ResultDeleteRes as ResultDeleteRes
+from tomo_idv_client.generated.models.result_delete_status import ResultDeleteStatus as ResultDeleteStatus
 from tomo_idv_client.generated.models.result_record import ResultRecord as ResultRecord
 from tomo_idv_client.generated.models.result_req import ResultReq as ResultReq
 from tomo_idv_client.generated.models.result_res import ResultRes as ResultRes
